@@ -167,6 +167,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "obsidian-git:Open Git source control": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
@@ -176,8 +177,9 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "643506cbfa7618b7",
+  "active": "066d8ed5010e66ea",
   "lastOpenFiles": [
+    "未命名",
     "新建 文本文档.txt"
   ]
 }
