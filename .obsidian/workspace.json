@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "算法/排序/1.冒泡排序.md",
+                "file": "算法/排序/2.选择排序.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1.冒泡排序"
+              "title": "2.选择排序"
             }
           }
         ]
@@ -183,9 +183,9 @@
   },
   "active": "37107cf74d938e85",
   "lastOpenFiles": [
+    "算法/排序/1.冒泡排序.md",
     "算法/排序/4.递归排序.md",
     "算法/排序/5.快速排序.md",
-    "算法/排序/1.冒泡排序.md",
     "算法/查询/7.哈希查询.md",
     "算法/排序/3.插入排序.md",
     "算法/排序/2.选择排序.md",
