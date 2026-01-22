@@ -90,8 +90,8 @@ SETEX name 60 "张三"    # 设置值并指定过期时间（秒）
 PSETEX name 60000 "张三" # 设置值并指定过期时间（毫秒）
 
 # 批量设置
-MSET k1 v1 k2 v2 k3 v3
-MSETNX k1 v1 k2 v2      # 原子操作，全部成功或全部失败
+MSET k1 v1 k2 v2 k3 v3   #覆盖已经存在的键
+MSETNX k1 v1 k2 v2      # 原子操作，全部成功或全部失败,不覆盖已经存在的键
 
 # 获取值
 GET name
