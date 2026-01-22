@@ -20,7 +20,7 @@
 # 查看所有键（生产环境慎用，数据量大时会阻塞）
 KEYS *                    # 所有键
 KEYS user:*               # 匹配模式
-KEYS *name*               # 包含name的键
+KEYS *name*               # 包含name的键（模糊查询）
 
 # 判断键是否存在
 EXISTS key1 key2          # 返回存在的键数量，没有返回0
@@ -30,7 +30,7 @@ DEL key1 key2             # 删除指定键,返回成功删除的键的数量
 UNLINK key1              # 异步删除（Redis 4.0+）返回被成功解除链接的键的数量
 
 # 设置过期时间
-EXPIRE key 60            # 60秒后过期
+EXPIRE key 60            # 60秒后过期,查询和写入优先删除，查询返回nil
 EXPIREAT key 1672531199  # 指定时间戳过期
 TTL key                  # 查看剩余时间（秒）
 PTTL key                 # 查看剩余时间（毫秒）
@@ -52,6 +52,7 @@ RANDOMKEY
 SCAN 0 MATCH user:* COUNT 10
 ```
 异步删除:[redis中UNLINK key1             ...](obsidian://deepseek-ai-assistant?id=1769060793988 "Open plugin:deepseek-ai-assistant")
+过期键:[redis中的键过期后会怎么样](obsidian://deepseek-ai-assistant?id=1769061741849 "Open plugin:deepseek-ai-assistant")
 ### 2. 数据库操作
 
 ```
@@ -66,7 +67,7 @@ FLUSHDB ASYNC          # 异步清空（Redis 4.0+）
 FLUSHALL
 FLUSHALL ASYNC         # 异步清空
 
-# 查看数据库大小
+# 查看数据库大小(键的个数)
 DBSIZE
 
 # 查看键类型
