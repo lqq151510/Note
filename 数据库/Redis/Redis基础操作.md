@@ -88,6 +88,8 @@ SET counter 0
 SETNX name "李四"       # 仅当键不存在时设置（原子性，实现分布式锁）
 SETEX name 60 "张三"    # 设置值并指定过期时间（秒）
 PSETEX name 60000 "张三" # 设置值并指定过期时间（毫秒）
+SETNX  key  value  #(原子操作)只有不存在key时才会成功返回1，否则为0。
+
 
 # 批量设置
 MSET k1 v1 k2 v2 k3 v3   #覆盖已经存在的键
@@ -108,6 +110,8 @@ GETRANGE name 0 3      # 获取索引0-3的字符
 
 # 追加字符串
 APPEND name "先生"      # 返回新长度
+
+
 ```
 
 ### 2. 数字操作
