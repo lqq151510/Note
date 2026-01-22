@@ -94,7 +94,7 @@ MSET k1 v1 k2 v2 k3 v3   #覆盖已经存在的键
 MSETNX k1 v1 k2 v2      # 原子操作，全部成功或全部失败,不覆盖已经存在的键
 
 # 获取值
-GET name
+GET name               #单个获取
 MGET k1 k2 k3          # 批量获取
 
 # 获取并设置（原子操作）
@@ -103,7 +103,7 @@ GETSET counter 1       # 返回旧值，设置新值
 # 获取字符串长度
 STRLEN name
 
-# 获取子字符串
+# 获取子字符串(左右都是闭区间)
 GETRANGE name 0 3      # 获取索引0-3的字符
 
 # 追加字符串
