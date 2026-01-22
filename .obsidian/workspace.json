@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "b920b46556a344f7",
@@ -94,16 +94,17 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "数据库/Redis/Redis基础操作.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
                 "searchQuery": "",
                 "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
+                "unlinkedCollapsed": false
               },
               "icon": "links-coming-in",
-              "title": "反向链接"
+              "title": "Redis基础操作 的反向链接列表"
             }
           },
           {
@@ -112,11 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "数据库/Redis/Redis基础操作.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "出链"
+              "title": "Redis基础操作 的出链列表"
             }
           },
           {
@@ -154,20 +156,31 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "数据库/Redis/Redis基础操作.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "大纲"
+              "title": "Redis基础操作 的大纲"
+            }
+          },
+          {
+            "id": "e5841831eaa9311e",
+            "type": "leaf",
+            "state": {
+              "type": "deepseek-ai-assistant-itemview",
+              "state": {},
+              "icon": "bot",
+              "title": "Deepseek AI assistant"
             }
           }
-        ]
+        ],
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 380.5
   },
   "left-ribbon": {
     "hiddenItems": {
