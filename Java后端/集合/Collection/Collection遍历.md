@@ -65,7 +65,7 @@ public class IteratorTraversal {
         System.out.println("\n=== 双向遍历（List特有）===");
         // 3. 双向迭代器（仅List有）
         List<String> list = new ArrayList<>(fruits);
-        ListIterator<String> listIterator = list.listIterator();
+        ListIterator<String> listIterator = list.listIterator();//列表迭代器
         
         // 正向遍历
         System.out.println("正向遍历:");
