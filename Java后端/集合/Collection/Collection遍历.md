@@ -32,7 +32,7 @@ import java.util.*;
 
 public class IteratorTraversal {
     public static void main(String[] args) {
-        // 创建集合
+        // 创建迭代器对象
         Collection<String> fruits = new ArrayList<>();
         fruits.add("Apple");
         fruits.add("Banana");
@@ -43,6 +43,7 @@ public class IteratorTraversal {
         System.out.println("=== 迭代器遍历 ===");
         
         // 1. 基本迭代器遍历
+        //获取迭代器对象
         Iterator<String> iterator = fruits.iterator();
         while (iterator.hasNext()) {
             String fruit = iterator.next();
