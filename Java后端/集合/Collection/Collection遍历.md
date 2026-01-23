@@ -118,7 +118,8 @@ while (it.hasNext()) {
 while (it.hasNext()) {
     String item = it.next();
     if ("B".equals(item)) {
-        list.remove(item);  // 抛出ConcurrentModificationException
+        list.remove(item); × // 抛出ConcurrentModificationException
+        it.move()√
     }
 }
 ```
@@ -133,6 +134,7 @@ while (it.hasNext()) {
 for (元素类型 element : collection) {
     // 处理元素
 }
+//只有单列集合和数组可以
 ```
 
 ### 2. 完整示例
