@@ -101,6 +101,33 @@ div { margin: 10px; }//选择的页面所有标签
 [href^="https"] { color: green; }  /* 以 https 开头 */
 [href$=".pdf"]::after { content: " (PDF)"; }  /* 以 .pdf 结尾 */
 [class*="btn"] { padding: 10px; }  /* 包含 btn */
+
+/* 分组选择器 */
+/* 为多个不同类型的元素设置相同的样式 */
+h1, h2, h3 {
+    color: #333;
+    font-family: Arial, sans-serif;
+    margin-bottom: 1rem;
+}
+
+/* 后代选择器 */
+/* 选择所有在nav元素内的a元素 */
+nav a {
+    color: #333;
+    text-decoration: none;
+}
+
+/* 选择所有在.content类内的p元素 */
+.content p {
+    line-height: 1.6;
+    margin-bottom: 1em;
+}
+
+/* 选择table内所有th元素 */
+table th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
 ```
 ### **优先级   ID>类>元素** 
 ### 2. 组合选择器
@@ -117,6 +144,8 @@ h1 + p { margin-top: 0; }  /* 紧跟在 h1 后的 p */
 
 /* 通用兄弟选择器 */
 h1 ~ p { color: gray; }  /* h1 后面的所有 p */
+
+
 ```
 
 ### 3. 伪类选择器
