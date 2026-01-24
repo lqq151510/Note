@@ -102,7 +102,7 @@ div { margin: 10px; }//选择的页面所有标签
 [href$=".pdf"]::after { content: " (PDF)"; }  /* 以 .pdf 结尾 */
 [class*="btn"] { padding: 10px; }  /* 包含 btn */
 ```
-
+### **优先级   ID>类>元素** 
 ### 2. 组合选择器
 
 ```
