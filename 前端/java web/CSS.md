@@ -83,15 +83,15 @@ p {
 ```
 /* 元素选择器 */
 p { color: blue; }
-div { margin: 10px; }
+div { margin: 10px; }//选择的页面所有标签
 
 /* 类选择器 */
 .class-name { color: red; }
-.important { font-weight: bold; }
+.important { font-weight: bold; }//选择页面所有class属性为对应类的标签
 
 /* ID 选择器 */
 #header { background: #333; }
-#main-content { width: 80%; }
+#main-content { width: 80%; }//选择页面ID属性为属性值的标签
 
 /* 通配符选择器 */
 * { margin: 0; padding: 0; }
