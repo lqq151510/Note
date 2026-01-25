@@ -503,7 +503,7 @@ p {
 ```
 /* 容器属性 */
 .container {
-    display: flex;           /* 或 inline-flex */
+    ==display: flex==;          /* 或 inline-flex */
     
     /* 主轴方向 */
     flex-direction: row;     /* row, row-reverse, column, column-reverse */
@@ -512,7 +512,7 @@ p {
     flex-wrap: nowrap;       /* nowrap, wrap, wrap-reverse */
     
     /* 主轴对齐 */
-    justify-content: flex-start; /* flex-start, flex-end, center, space-between, space-around, space-evenly */
+    justify-content: flex-start; /* flex-start(从头排列), flex-end（从尾排列）, center（居中对齐）, space-between(先两边贴边展示，再平分), space-around(平分剩余空间), space-evenly */
     
     /* 交叉轴对齐 */
     align-items: stretch;    /* stretch, flex-start, flex-end, center, baseline */
