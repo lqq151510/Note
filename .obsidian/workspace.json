@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "数据库/Redis/Redis基础操作.md",
+                "file": "Java后端/集合/Collection/Set(实现类)/红黑树.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Redis基础操作 的大纲"
+              "title": "红黑树 的大纲"
             }
           },
           {
@@ -176,11 +176,11 @@
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 252.5
+    "width": 597.5
   },
   "left-ribbon": {
     "hiddenItems": {
