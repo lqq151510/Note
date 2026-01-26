@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "6134e40bfc2bbd5e",
+        "id": "3ce0bde938873142",
         "type": "tabs",
         "children": [
           {
-            "id": "5e70cf30f5df8cd4",
+            "id": "00759b9f3375539f",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "前端/Vue 3/async和 await.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "async和 await"
+              "title": "新标签页"
             }
           }
         ]
@@ -195,8 +191,9 @@
       "deepseek-ai-assistant:Open deepseek AI assistant": false
     }
   },
-  "active": "5e70cf30f5df8cd4",
+  "active": "00759b9f3375539f",
   "lastOpenFiles": [
+    "前端/Vue 3/生命周期.md",
     "前端/Vue 3/Ajax.md",
     "前端/Vue 3/async和 await.md",
     "前端/java web/HTML.md",
@@ -231,7 +228,6 @@
     "Java后端/集合/Collection/List(接口）",
     "Java后端/集合/Collection/Set(实现类)/HashSet/HashSet.md",
     "Java后端/集合/Collection/Set(实现类)/HashSet",
-    "Java后端/集合/Collection/Set(实现类)/TreeSet.md",
     "Java后端/集合/Collection/Set(实现类)"
   ]
 }
