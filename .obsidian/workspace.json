@@ -11,10 +11,14 @@
             "id": "00759b9f3375539f",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Java后端/集合/Collection/Set(实现类)/TreeSet.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "TreeSet"
             }
           }
         ]
@@ -193,6 +197,8 @@
   },
   "active": "00759b9f3375539f",
   "lastOpenFiles": [
+    "Java后端/集合/Collection/Set(实现类)/Set系列集合.md",
+    "Java后端/集合/Collection/List(接口）/Vector.md",
     "前端/Vue 3/生命周期.md",
     "前端/Vue 3/Ajax.md",
     "前端/Vue 3/async和 await.md",
@@ -217,13 +223,11 @@
     "Java后端/集合/Collection/Collection遍历.md",
     "Java后端/Arrays类/java中Arrays类.md",
     "Java后端/集合/Collection/List(接口）/ArrayList.md",
-    "Java后端/集合/Collection/List(接口）/Vector.md",
     "Java后端/集合/Collection/List(接口）/List系列集合特点.md",
     "Java后端/集合/Collection/Collection.md",
     "数据库/Redis/Redis基础操作.md",
     "数据库/Redis",
     "数据库",
-    "Java后端/集合/Collection/Set(实现类)/Set系列集合.md",
     "Java后端/集合/Collection/Set(实现类)/HashSet/LinkedHashSet.md",
     "Java后端/集合/Collection/List(接口）",
     "Java后端/集合/Collection/Set(实现类)/HashSet/HashSet.md",
