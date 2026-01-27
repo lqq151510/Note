@@ -1,626 +1,321 @@
-# Java 中的树、二叉树和平衡二叉树（含旋转机制）
+# TreeSet集合底层原理详解
 
-下面这个表格对比了树、二叉树和平衡二叉树的核心特性：
+TreeSet是Java集合框架中一个基于**红黑树(Red-Black Tree)**实现的NavigableSet接口实现，它能够对元素进行**自然排序**或根据提供的Comparator进行排序。
 
-|特性|树 (Tree)|二叉树 (Binary Tree)|平衡二叉树 (Balanced Binary Tree)|
+## 一、核心数据结构
+
+### 1.1 底层依赖TreeMap
+
+```
+public class TreeSet<E> extends AbstractSet<E>
+    implements NavigableSet<E>, Cloneable, java.io.Serializable {
+    
+    // 底层使用TreeMap存储元素
+    private transient NavigableMap<E, Object> m;
+    
+    // 虚拟的常量值，用于填充TreeMap的value
+    private static final Object PRESENT = new Object();
+    
+    // 构造方法
+    public TreeSet() {
+        this(new TreeMap<E, Object>()); // 默认使用自然排序的TreeMap
+    }
+    
+    // 添加元素的核心方法
+    public boolean add(E e) {
+        return m.put(e, PRESENT) == null;
+    }
+}
+```
+
+**核心结论**：TreeSet的底层实际上是一个**TreeMap**，所有元素作为TreeMap的key存储，value统一为PRESENT常量。
+
+## 二、红黑树数据结构
+
+### 2.1 红黑树特性
+
+红黑树是一种自平衡的二叉查找树，具有以下特性：
+
+1. **节点颜色**：每个节点是红色或黑色
+    
+2. **根节点**：根节点必须是黑色
+    
+3. **叶子节点**：所有叶子节点（NIL节点）都是黑色
+    
+4. **红色节点规则**：红色节点的子节点必须是黑色（不能有连续的红色节点）
+    
+5. **路径规则**：从任一节点到其每个叶子节点的所有路径都包含相同数目的黑色节点
+    
+
+### 2.2 TreeMap中的Entry结构
+
+```
+static final class Entry<K,V> implements Map.Entry<K,V> {
+    K key;          // 存储的元素（TreeSet的value）
+    V value;        // 固定的PRESENT值
+    Entry<K,V> left;    // 左子节点
+    Entry<K,V> right;   // 右子节点
+    Entry<K,V> parent;  // 父节点
+    boolean color = BLACK; // 节点颜色
+    
+    // 构造方法
+    Entry(K key, V value, Entry<K,V> parent) {
+        this.key = key;
+        this.value = value;
+        this.parent = parent;
+    }
+}
+```
+
+## 三、排序机制
+
+### 3.1 两种排序方式
+
+```
+// 1. 自然排序：元素必须实现Comparable接口
+TreeSet<String> naturalSet = new TreeSet<>();
+naturalSet.add("apple");
+naturalSet.add("banana");
+naturalSet.add("cherry");
+
+// 2. 定制排序：提供Comparator比较器
+TreeSet<String> customSet = new TreeSet<>((a, b) -> b.compareTo(a)); // 逆序
+customSet.add("apple");
+customSet.add("banana");
+```
+
+### 3.2 排序规则的执行时机
+
+当添加元素时，TreeSet通过比较器确定元素在红黑树中的位置：
+
+```
+public boolean add(E e) {
+    return m.put(e, PRESENT) == null;
+}
+
+// TreeMap的put方法核心逻辑
+final int compare(Object k1, Object k2) {
+    return comparator == null ? 
+        ((Comparable<? super K>)k1).compareTo((K)k2) : // 自然排序
+        comparator.compare((K)k1, (K)k2);              // 定制排序
+}
+```
+
+## 四、核心操作原理
+
+### 4.1 添加元素流程
+
+```
+public boolean add(E e) {
+    return m.put(e, PRESENT) == null;
+}
+```
+
+**详细步骤**：
+
+1. **比较定位**：从根节点开始，使用比较器比较新元素与当前节点
+    
+2. **查找位置**：
+    
+    - 如果新元素 < 当前节点，转向左子树
+        
+    - 如果新元素 > 当前节点，转向右子树
+        
+    - 如果相等，不插入（保证唯一性）
+        
+    
+3. **插入节点**：找到合适位置后创建新节点（初始为红色）
+    
+4. **重新平衡**：通过旋转和变色操作维持红黑树特性
+    
+
+### 4.2 查找元素流程
+
+```
+public boolean contains(Object o) {
+    return m.containsKey(o);
+}
+```
+
+**查找过程**（二叉查找树原理）：
+
+```
+// 类似于二分查找，时间复杂度O(log n)
+while (current != null) {
+    int cmp = compare(o, current.key);
+    if (cmp < 0) {
+        current = current.left;    // 向左子树查找
+    } else if (cmp > 0) {
+        current = current.right;   // 向右子树查找
+    } else {
+        return true;               // 找到元素
+    }
+}
+return false; // 未找到
+```
+
+### 4.3 删除元素流程
+
+删除操作是红黑树中最复杂的操作，涉及多种情况的处理：
+
+1. **查找节点**：定位要删除的节点
+    
+2. **替代节点**：找到中序遍历下的后继节点
+    
+3. **颜色调整**：根据节点颜色进行不同的平衡操作
+    
+4. **旋转修复**：通过左旋/右旋恢复红黑树性质
+    
+
+## 五、性能特点
+
+### 5.1 时间复杂度对比
+
+|操作|TreeSet|HashSet|LinkedHashSet|
 |---|---|---|---|
-|**定义**​|非线性数据结构，由节点和边组成，每个节点有零个或多个子节点|每个节点最多有两个子节点（左/右子节点）|特殊的二叉搜索树，任意节点的左右子树高度差 ≤ 1|
-|**结构**​|任意结构，无子节点数限制|严格最多2个子节点|二叉树结构 + 平衡约束|
-|**遍历方式**​|前序、后序、层序|前序、中序、后序、层序|同上，但搜索效率更高|
-|**时间复杂度**​|取决于具体类型|普通二叉树：O(n)|搜索/插入/删除：O(log n)|
-|**常见类型**​|普通树、B树、B+树、Trie树|普通二叉树、二叉搜索树、满二叉树、完全二叉树|AVL树、红黑树、伸展树|
-|**应用场景**​|文件系统、数据库索引、XML/HTML解析|表达式树、哈夫曼编码、搜索算法|数据库索引、集合类（TreeMap、TreeSet）、内存分配|
+|添加(add)|O(log n)|O(1)|O(1)|
+|删除(remove)|O(log n)|O(1)|O(1)|
+|查找(contains)|O(log n)|O(1)|O(1)|
+|遍历迭代|O(n)|O(n)|O(n)|
+|获取首尾元素|O(log n)|不支持|不支持|
 
-## 1. 树 (Tree)
+### 5.2 空间复杂度
 
-### 基本概念
-
-树是一种分层的数据结构，由节点（node）和边（edge）组成：
-
-- **根节点**：没有父节点的节点
+- **平均情况**：O(n)
     
-- **子节点/父节点**：节点之间的关系
-    
-- **叶子节点**：没有子节点的节点
-    
-- **深度/高度**：从根到节点的边数/从节点到最远叶子的边数
+- **每个节点**需要存储左右子节点指针、父节点指针和颜色标志
     
 
-### Java 实现
+## 六、特殊功能方法
+
+由于实现了NavigableSet接口，TreeSet提供了丰富的导航方法：
 
 ```
-// 通用树节点定义
-class TreeNode<T> {
-    T data;
-    List<TreeNode<T>> children;
+TreeSet<Integer> set = new TreeSet<>();
+set.addAll(Arrays.asList(10, 20, 30, 40, 50));
+
+// 范围查询
+System.out.println(set.headSet(30));        // [10, 20]       小于30的元素
+System.out.println(set.tailSet(30));        // [30, 40, 50]   大于等于30的元素
+System.out.println(set.subSet(20, 40));    // [20, 30]       20到40之间的元素
+
+// 导航方法
+System.out.println(set.ceiling(25));        // 30     大于等于25的最小元素
+System.out.println(set.floor(25));          // 20     小于等于25的最大元素
+System.out.println(set.higher(30));         // 40     严格大于30的最小元素
+System.out.println(set.lower(30));          // 20     严格小于30的最大元素
+
+// 首尾元素
+System.out.println(set.first());            // 10
+System.out.println(set.last());             // 50
+```
+
+## 七、使用注意事项
+
+### 7.1 元素必须可比较
+
+```
+// 错误示例：未实现Comparable接口的类
+class Person {
+    String name;
+    int age;
+}
+
+TreeSet<Person> set = new TreeSet<>(); // 运行时抛出ClassCastException
+set.add(new Person("Alice", 25));
+
+// 正确方式1：实现Comparable接口
+class Person implements Comparable<Person> {
+    String name;
+    int age;
     
-    public TreeNode(T data) {
-        this.data = data;
-        this.children = new ArrayList<>();
-    }
-    
-    public void addChild(TreeNode<T> child) {
-        children.add(child);
+    @Override
+    public int compareTo(Person other) {
+        return Integer.compare(this.age, other.age);
     }
 }
 
-// 树的基本操作
-class Tree<T> {
-    private TreeNode<T> root;
+// 正确方式2：提供Comparator
+TreeSet<Person> set = new TreeSet<>(
+    Comparator.comparing(Person::getName).thenComparingInt(Person::getAge)
+);
+```
+
+### 7.2 排序一致性
+
+**重要原则**：compareTo或compare方法必须与equals方法保持一致
+
+```
+class Product implements Comparable<Product> {
+    String id;
+    String name;
     
-    public Tree(T rootData) {
-        root = new TreeNode<>(rootData);
+    // 错误：排序逻辑与equals不一致
+    @Override
+    public int compareTo(Product other) {
+        return this.name.compareTo(other.name); // 只按name排序
     }
     
-    // 前序遍历
-    public void preOrderTraversal(TreeNode<T> node) {
-        if (node == null) return;
-        
-        System.out.print(node.data + " ");
-        for (TreeNode<T> child : node.children) {
-            preOrderTraversal(child);
-        }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Product)) return false;
+        Product other = (Product) obj;
+        return Objects.equals(id, other.id) && Objects.equals(name, other.name);
     }
     
-    // 后序遍历
-    public void postOrderTraversal(TreeNode<T> node) {
-        if (node == null) return;
-        
-        for (TreeNode<T> child : node.children) {
-            postOrderTraversal(child);
-        }
-        System.out.print(node.data + " ");
-    }
-    
-    // 层序遍历
-    public void levelOrderTraversal() {
-        if (root == null) return;
-        
-        Queue<TreeNode<T>> queue = new LinkedList<>();
-        queue.offer(root);
-        
-        while (!queue.isEmpty()) {
-            TreeNode<T> current = queue.poll();
-            System.out.print(current.data + " ");
-            
-            for (TreeNode<T> child : current.children) {
-                queue.offer(child);
-            }
-        }
-    }
+    // 会导致TreeSet认为两个不同id但同name的对象"相等"，从而拒绝插入
 }
 ```
 
-## 2. 二叉树 (Binary Tree)
+## 八、与HashSet的对比选择
 
-二叉树是每个节点最多有两个子节点（左子节点和右子节点）的树结构。
+### 8.1 选择依据
 
-### 二叉树类型
+|场景|推荐选择|理由|
+|---|---|---|
+|需要自动排序|**TreeSet**​|提供自然顺序或定制顺序|
+|需要最高性能的查找|**HashSet**​|O(1)时间复杂度|
+|需要插入顺序|**LinkedHashSet**​|维护插入迭代顺序|
+|需要范围查询|**TreeSet**​|提供headSet、tailSet等方法|
+|内存敏感|**HashSet**​|TreeSet每个节点需要额外指针|
+
+### 8.2 性能测试示例
 
 ```
-// 二叉树节点定义
-class BinaryTreeNode {
-    int val;
-    BinaryTreeNode left;
-    BinaryTreeNode right;
-    
-    public BinaryTreeNode(int val) {
-        this.val = val;
-        this.left = null;
-        this.right = null;
-    }
+// 大量数据插入性能对比
+Set<Integer> hashSet = new HashSet<>();
+Set<Integer> treeSet = new TreeSet<>();
+
+long start = System.nanoTime();
+for (int i = 0; i < 1000000; i++) {
+    hashSet.add(i);
 }
+long hashTime = System.nanoTime() - start;
 
-// 二叉树实现
-class BinaryTree {
-    private BinaryTreeNode root;
-    
-    // 各种遍历方式
-    public void preOrder(BinaryTreeNode node) {
-        if (node == null) return;
-        System.out.print(node.val + " ");  // 访问根
-        preOrder(node.left);              // 遍历左子树
-        preOrder(node.right);             // 遍历右子树
-    }
-    
-    public void inOrder(BinaryTreeNode node) {
-        if (node == null) return;
-        inOrder(node.left);               // 遍历左子树
-        System.out.print(node.val + " ");  // 访问根
-        inOrder(node.right);              // 遍历右子树
-    }
-    
-    public void postOrder(BinaryTreeNode node) {
-        if (node == null) return;
-        postOrder(node.left);             // 遍历左子树
-        postOrder(node.right);            // 遍历右子树
-        System.out.print(node.val + " ");  // 访问根
-    }
-    
-    // 非递归遍历（使用栈）
-    public void inOrderIterative() {
-        Stack<BinaryTreeNode> stack = new Stack<>();
-        BinaryTreeNode current = root;
-        
-        while (current != null || !stack.isEmpty()) {
-            // 遍历到最左节点
-            while (current != null) {
-                stack.push(current);
-                current = current.left;
-            }
-            
-            // 访问节点
-            current = stack.pop();
-            System.out.print(current.val + " ");
-            
-            // 转向右子树
-            current = current.right;
-        }
-    }
+start = System.nanoTime();
+for (int i = 0; i < 1000000; i++) {
+    treeSet.add(i);
 }
+long treeTime = System.nanoTime() - start;
+
+System.out.println("HashSet插入时间: " + hashTime / 1000000 + "ms");
+System.out.println("TreeSet插入时间: " + treeTime / 1000000 + "ms");
 ```
-
-### 特殊二叉树类型
-
-```
-// 判断是否为二叉搜索树 (BST)
-class BSTValidator {
-    public boolean isValidBST(BinaryTreeNode root) {
-        return validate(root, Long.MIN_VALUE, Long.MAX_VALUE);
-    }
-    
-    private boolean validate(BinaryTreeNode node, long min, long max) {
-        if (node == null) return true;
-        
-        if (node.val <= min || node.val >= max) {
-            return false;
-        }
-        
-        return validate(node.left, min, node.val) && 
-               validate(node.right, node.val, max);
-    }
-}
-
-// 二叉搜索树操作
-class BinarySearchTree {
-    private BinaryTreeNode root;
-    
-    // 插入节点
-    public void insert(int val) {
-        root = insertRecursive(root, val);
-    }
-    
-    private BinaryTreeNode insertRecursive(BinaryTreeNode node, int val) {
-        if (node == null) {
-            return new BinaryTreeNode(val);
-        }
-        
-        if (val < node.val) {
-            node.left = insertRecursive(node.left, val);
-        } else if (val > node.val) {
-            node.right = insertRecursive(node.right, val);
-        }
-        
-        return node;
-    }
-    
-    // 搜索节点
-    public boolean search(int val) {
-        return searchRecursive(root, val);
-    }
-    
-    private boolean searchRecursive(BinaryTreeNode node, int val) {
-        if (node == null) return false;
-        
-        if (val == node.val) return true;
-        else if (val < node.val) return searchRecursive(node.left, val);
-        else return searchRecursive(node.right, val);
-    }
-}
-```
-
-## 3. 平衡二叉树 (AVL树)
-
-AVL树是最早的自平衡二叉搜索树，通过旋转操作保持平衡。
-
-### AVL树节点
-
-```
-class AVLNode {
-    int val;
-    int height;  // 节点高度
-    AVLNode left;
-    AVLNode right;
-    
-    public AVLNode(int val) {
-        this.val = val;
-        this.height = 1;  // 新节点高度为1
-    }
-}
-```
-
-### 四种旋转操作详解
-
-下面的流程图展示了AVL树的四种不平衡情况和对应的旋转操作：
-
-```
-flowchart TD
-    A[插入/删除导致不平衡] --> B{检查平衡因子}
-    
-    B -->|左子树更高 LL型| C[右旋转]
-    B -->|右子树更高 RR型| D[左旋转]
-    B -->|左子树的右子树更高 LR型| E[先左旋后右旋]
-    B -->|右子树的左子树更高 RL型| F[先右旋后左旋]
-    
-    C --> G[恢复平衡]
-    D --> G
-    E --> G
-    F --> G
-```
-
-#### 3.1 右旋转 (LL旋转)
-
-当左子树比右子树高，且不平衡节点在左子树的左子树时使用。
-
-```
-class AVLTree {
-    private AVLNode root;
-    
-    // 获取节点高度
-    private int height(AVLNode node) {
-        return node == null ? 0 : node.height;
-    }
-    
-    // 获取平衡因子
-    private int getBalanceFactor(AVLNode node) {
-        return node == null ? 0 : height(node.left) - height(node.right);
-    }
-    
-    // 右旋转（针对LL情况）
-    private AVLNode rightRotate(AVLNode y) {
-        /*
-            y (不平衡节点)          x
-           / \                    /  \
-          x   T3      →         T1    y
-         / \                        /  \
-        T1  T2                     T2  T3
-        */
-        AVLNode x = y.left;
-        AVLNode T2 = x.right;
-        
-        // 执行旋转
-        x.right = y;
-        y.left = T2;
-        
-        // 更新高度
-        y.height = Math.max(height(y.left), height(y.right)) + 1;
-        x.height = Math.max(height(x.left), height(x.right)) + 1;
-        
-        return x;  // 返回新的根节点
-    }
-    
-    // 左旋转（针对RR情况）
-    private AVLNode leftRotate(AVLNode x) {
-        /*
-          x (不平衡节点)              y
-         /  \                      /  \
-        T1   y         →         x    T3
-            / \                /  \
-           T2  T3             T1   T2
-        */
-        AVLNode y = x.right;
-        AVLNode T2 = y.left;
-        
-        // 执行旋转
-        y.left = x;
-        x.right = T2;
-        
-        // 更新高度
-        x.height = Math.max(height(x.left), height(x.right)) + 1;
-        y.height = Math.max(height(y.left), height(y.right)) + 1;
-        
-        return y;  // 返回新的根节点
-    }
-}
-```
-
-#### 3.2 左右旋转 (LR旋转)
-
-先对左子节点左旋，再对当前节点右旋。
-
-```
-// 左右旋转（针对LR情况）
-private AVLNode leftRightRotate(AVLNode z) {
-    /*
-        z (不平衡节点)          z          T2
-       / \                    / \        /  \
-      y   T4      →         T2  T4  →  y     z
-     / \                    / \        / \   / \
-    T1  T2                 y   T3     T1  T3 T4
-         \                /
-         T3             T1
-    */
-    z.left = leftRotate(z.left);  // 先对左子节点左旋
-    return rightRotate(z);        // 再对当前节点右旋
-}
-```
-
-#### 3.3 右左旋转 (RL旋转)
-
-先对右子节点右旋，再对当前节点左旋。
-
-```
-// 右左旋转（针对RL情况）
-private AVLNode rightLeftRotate(AVLNode z) {
-    /*
-        z (不平衡节点)         z             T3
-       /  \                 /  \           /  \
-      T1   y     →        T1   T3    →   z     y
-          / \                 /  \      / \   / \
-         T3  T4              T2   y    T1 T2 T3 T4
-        / \                      /  \
-       T2                        T4
-    */
-    z.right = rightRotate(z.right);  // 先对右子节点右旋
-    return leftRotate(z);             // 再对当前节点左旋
-}
-```
-
-### 完整的AVL树实现
-
-```
-class AVLTree {
-    private AVLNode root;
-    
-    // 插入节点
-    public void insert(int val) {
-        root = insertRecursive(root, val);
-    }
-    
-    private AVLNode insertRecursive(AVLNode node, int val) {
-        // 1. 标准的BST插入
-        if (node == null) {
-            return new AVLNode(val);
-        }
-        
-        if (val < node.val) {
-            node.left = insertRecursive(node.left, val);
-        } else if (val > node.val) {
-            node.right = insertRecursive(node.right, val);
-        } else {
-            return node;  // 不允许重复值
-        }
-        
-        // 2. 更新当前节点高度
-        node.height = 1 + Math.max(height(node.left), height(node.right));
-        
-        // 3. 获取平衡因子，检查是否不平衡
-        int balance = getBalanceFactor(node);
-        
-        // 4. 根据不平衡类型进行旋转
-        // LL情况
-        if (balance > 1 && val < node.left.val) {
-            return rightRotate(node);
-        }
-        
-        // RR情况
-        if (balance < -1 && val > node.right.val) {
-            return leftRotate(node);
-        }
-        
-        // LR情况
-        if (balance > 1 && val > node.left.val) {
-            return leftRightRotate(node);
-        }
-        
-        // RL情况
-        if (balance < -1 && val < node.right.val) {
-            return rightLeftRotate(node);
-        }
-        
-        return node;  // 返回未修改的节点
-    }
-    
-    // 删除节点
-    public void delete(int val) {
-        root = deleteRecursive(root, val);
-    }
-    
-    private AVLNode deleteRecursive(AVLNode node, int val) {
-        if (node == null) return null;
-        
-        // 1. 标准的BST删除
-        if (val < node.val) {
-            node.left = deleteRecursive(node.left, val);
-        } else if (val > node.val) {
-            node.right = deleteRecursive(node.right, val);
-        } else {
-            // 找到要删除的节点
-            if (node.left == null || node.right == null) {
-                // 有一个或没有子节点
-                AVLNode temp = (node.left != null) ? node.left : node.right;
-                node = temp;  // 用子节点替换或设为null
-            } else {
-                // 有两个子节点：找到中序后继
-                AVLNode temp = getMinNode(node.right);
-                node.val = temp.val;  // 复制值
-                node.right = deleteRecursive(node.right, temp.val);  // 删除后继
-            }
-        }
-        
-        if (node == null) return null;
-        
-        // 2. 更新高度
-        node.height = 1 + Math.max(height(node.left), height(node.right));
-        
-        // 3. 检查平衡
-        int balance = getBalanceFactor(node);
-        
-        // 4. 根据不平衡类型进行旋转
-        // LL情况
-        if (balance > 1 && getBalanceFactor(node.left) >= 0) {
-            return rightRotate(node);
-        }
-        
-        // LR情况
-        if (balance > 1 && getBalanceFactor(node.left) < 0) {
-            return leftRightRotate(node);
-        }
-        
-        // RR情况
-        if (balance < -1 && getBalanceFactor(node.right) <= 0) {
-            return leftRotate(node);
-        }
-        
-        // RL情况
-        if (balance < -1 && getBalanceFactor(node.right) > 0) {
-            return rightLeftRotate(node);
-        }
-        
-        return node;
-    }
-    
-    // 获取最小节点
-    private AVLNode getMinNode(AVLNode node) {
-        AVLNode current = node;
-        while (current.left != null) {
-            current = current.left;
-        }
-        return current;
-    }
-    
-    // 中序遍历
-    public void inOrderTraversal() {
-        inOrderRecursive(root);
-        System.out.println();
-    }
-    
-    private void inOrderRecursive(AVLNode node) {
-        if (node != null) {
-            inOrderRecursive(node.left);
-            System.out.print(node.val + "(h=" + node.height + ") ");
-            inOrderRecursive(node.right);
-        }
-    }
-}
-```
-
-### 测试示例
-
-```
-public class AVLTreeExample {
-    public static void main(String[] args) {
-        AVLTree avlTree = new AVLTree();
-        
-        // 测试插入
-        System.out.println("插入顺序: 10, 20, 30, 40, 50, 25");
-        
-        avlTree.insert(10);
-        avlTree.insert(20);
-        avlTree.insert(30);  // 触发旋转
-        avlTree.insert(40);
-        avlTree.insert(50);  // 触发旋转
-        avlTree.insert(25);
-        
-        System.out.print("中序遍历: ");
-        avlTree.inOrderTraversal();  // 输出: 10 20 25 30 40 50
-        
-        // 测试删除
-        avlTree.delete(25);
-        System.out.print("删除25后: ");
-        avlTree.inOrderTraversal();  // 输出: 10 20 30 40 50
-        
-        avlTree.delete(40);
-        System.out.print("删除40后: ");
-        avlTree.inOrderTraversal();  // 输出: 10 20 30 50
-    }
-}
-```
-
-## 平衡因子计算与旋转规则总结
-
-|不平衡情况|平衡因子|子树情况|旋转方法|
-|---|---|---|---|
-|**LL型**​|节点A: +2|左子节点B: +1 或 0|右旋转|
-|**RR型**​|节点A: -2|右子节点B: -1 或 0|左旋转|
-|**LR型**​|节点A: +2|左子节点B: -1|先左旋(B)后右旋(A)|
-|**RL型**​|节点A: -2|右子节点B: +1|先右旋(B)后左旋(A)|
-
-## Java 中的平衡二叉树实现
-
-Java集合框架中已经实现了平衡二叉树：
-
-### TreeMap (基于红黑树)
-
-```
-import java.util.TreeMap;
-import java.util.Map;
-
-public class TreeMapExample {
-    public static void main(String[] args) {
-        // TreeMap内部使用红黑树（一种近似平衡的二叉搜索树）
-        TreeMap<Integer, String> treeMap = new TreeMap<>();
-        
-        treeMap.put(10, "Apple");
-        treeMap.put(5, "Banana");
-        treeMap.put(15, "Cherry");
-        treeMap.put(3, "Date");
-        treeMap.put(7, "Elderberry");
-        
-        // 自动按key排序
-        for (Map.Entry<Integer, String> entry : treeMap.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
-        }
-        // 输出: 3: Date, 5: Banana, 7: Elderberry, 10: Apple, 15: Cherry
-    }
-}
-```
-
-### TreeSet (同样基于红黑树)
-
-```
-import java.util.TreeSet;
-
-public class TreeSetExample {
-    public static void main(String[] args) {
-        TreeSet<Integer> treeSet = new TreeSet<>();
-        
-        treeSet.add(30);
-        treeSet.add(20);
-        treeSet.add(40);
-        treeSet.add(10);
-        treeSet.add(25);
-        
-        System.out.println("有序集合: " + treeSet);  // [10, 20, 25, 30, 40]
-        System.out.println("第一个元素: " + treeSet.first());  // 10
-        System.out.println("最后一个元素: " + treeSet.last());  // 40
-        System.out.println("大于等于15的最小元素: " + treeSet.ceiling(15));  // 20
-    }
-}
-```
-
-## 性能对比
-
-|操作|普通二叉搜索树|AVL树|红黑树|
-|---|---|---|---|
-|**搜索**​|O(n) 最坏|O(log n)|O(log n)|
-|**插入**​|O(n) 最坏|O(log n)|O(log n)|
-|**删除**​|O(n) 最坏|O(log n)|O(log n)|
-|**旋转次数**​|无|较多|较少|
-|**平衡要求**​|无|严格（高度差≤1）|较宽松（5个性质）|
-|**适用场景**​|数据随机分布|查找密集型|插入/删除频繁|
 
 ## 总结
 
-1. **树**是基础数据结构，二叉树是每个节点最多有两个子节点的树。
+TreeSet的核心特点是：
+
+1. **底层结构**：基于红黑树实现的自平衡二叉查找树
     
-2. **平衡二叉树**（如AVL树）通过旋转操作保持平衡，确保操作时间复杂度为O(log n)。
+2. **排序特性**：元素自动排序（自然排序或定制排序）
     
-3. **旋转机制**是AVL树的核心，包括四种情况：LL（右旋）、RR（左旋）、LR（左右旋）、RL（右左旋）。
+3. **性能特点**：所有操作的时间复杂度为O(log n)
     
-4. **Java中的实现**：TreeMap和TreeSet基于红黑树（一种近似平衡的二叉搜索树）。
+4. **特殊功能**：提供丰富的导航和范围查询方法
     
-5. **实际应用**：数据库索引、文件系统、内存管理、网络路由等。
+5. **使用约束**：元素必须可比较，排序逻辑需与equals一致
     
 
-理解这些数据结构和它们的平衡机制对于设计高效算法和系统至关重要。AVL树提供了严格的平衡保证，而红黑树则在旋转开销和平衡性之间取得了更好的折衷，这也是Java集合框架选择红黑树的原因。
+TreeSet在需要有序存储、范围查询或导航操作的场景下非常有用，但在纯查找性能要求极高的场景下，HashSet可能是更好的选择。
