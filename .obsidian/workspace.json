@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java后端/Maven/什么是Maven.md",
+                "file": "Java后端/集合/Collection/Set(实现类)/Set系列集合.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "什么是Maven"
+              "title": "Set系列集合"
             }
           }
         ]
@@ -195,10 +195,10 @@
       "deepseek-ai-assistant:Open deepseek AI assistant": false
     }
   },
-  "active": "e5841831eaa9311e",
+  "active": "00759b9f3375539f",
   "lastOpenFiles": [
-    "Java后端/集合/Collection/Set(实现类)/红黑树.md",
     "Java后端/Maven/什么是Maven.md",
+    "Java后端/集合/Collection/Set(实现类)/红黑树.md",
     "Java后端/Maven",
     "Java后端/集合/Collection/Set(实现类)/二叉树.md",
     "Java后端/集合/Collection/Set(实现类)/TreeSet.md",
