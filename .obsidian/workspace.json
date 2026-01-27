@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java后端/集合/Collection/Set(实现类)/Set系列集合.md",
+                "file": "Java后端/集合/Collection/Set(实现类)/HashSet/HashSet.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Set系列集合"
+              "title": "HashSet"
             }
           }
         ]
@@ -197,6 +197,7 @@
   },
   "active": "00759b9f3375539f",
   "lastOpenFiles": [
+    "Java后端/集合/Collection/Set(实现类)/Set系列集合.md",
     "Java后端/Maven/什么是Maven.md",
     "Java后端/集合/Collection/Set(实现类)/红黑树.md",
     "Java后端/Maven",
@@ -204,7 +205,6 @@
     "Java后端/集合/Collection/Set(实现类)/TreeSet.md",
     "Java后端/集合/Collection/Set(实现类)/HashSet/HashSet.md",
     "Java后端/集合/Collection/Set(实现类)/HashSet/LinkedHashSet.md",
-    "Java后端/集合/Collection/Set(实现类)/Set系列集合.md",
     "Java后端/集合/Collection/List(接口）/Vector.md",
     "前端/Vue 3/生命周期.md",
     "前端/Vue 3/Ajax.md",
