@@ -195,8 +195,9 @@
       "deepseek-ai-assistant:Open deepseek AI assistant": false
     }
   },
-  "active": "00759b9f3375539f",
+  "active": "066d8ed5010e66ea",
   "lastOpenFiles": [
+    "Java后端/面向对象",
     "Java后端/集合/Map/Map.md",
     "Java后端/集合/Map/双列集合的特点.md",
     "Java后端/集合/Map/HashMap.md",
@@ -225,7 +226,6 @@
     "Java后端/基础/循环.md",
     "Java后端/基础/判断.md",
     "Java后端/基础/基础.md",
-    "Java后端/集合/泛型/泛型.md",
     "Java后端/基础",
     "Java后端/集合/泛型",
     "Java后端/集合/Collection/未命名",
