@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java后端/集合/Collection/List(接口）/ArrayList.md",
+                "file": "Java后端/面向对象/继承.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ArrayList"
+              "title": "继承"
             }
           }
         ]
@@ -197,7 +197,10 @@
   },
   "active": "00759b9f3375539f",
   "lastOpenFiles": [
+    "Java后端/面向对象/Java静态变量、静态方法和工具类.md",
+    "Java后端/面向对象/继承.md",
     "Java后端/字符串/Stringjoiner的基本操作.md",
+    "Java后端/集合/Collection/List(接口）/ArrayList.md",
     "Java后端/字符串/StringBuilder的基本操作.md",
     "Java后端/字符串/字符串常用方法.md",
     "Java后端/面向对象/封装.md",
@@ -224,9 +227,6 @@
     "前端/Vue 3/Ajax.md",
     "前端/Vue 3/async和 await.md",
     "前端/java web/HTML.md",
-    "前端/Vue 3/Vue 常用指令.md",
-    "前端/Vue 3/什么是Vue.md",
-    "前端/java web/JavaScript.md",
     "前端/Vue 3",
     "Java后端/基础",
     "Java后端/集合/泛型",
