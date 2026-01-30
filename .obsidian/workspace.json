@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java后端/集合/Collection/Collection.md",
+                "file": "Java后端/集合/不可变集合.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Collection"
+              "title": "不可变集合"
             }
           }
         ]
@@ -195,13 +195,14 @@
       "deepseek-ai-assistant:Open deepseek AI assistant": false
     }
   },
-  "active": "00759b9f3375539f",
+  "active": "066d8ed5010e66ea",
   "lastOpenFiles": [
+    "Java后端/集合/Collection/Collection.md",
+    "Java后端/集合/不可变集合.md",
     "Java后端/集合/集合进阶/Collections.md",
     "Java后端/集合/集合进阶/可变参数.md",
     "Java后端/集合/Map/LinkedHashMap.md",
     "Java后端/集合/集合进阶",
-    "Java后端/集合/未命名.md",
     "Java后端/集合/Map/HashMap.md",
     "Java后端/面向对象/内部类.md",
     "Java后端/面向对象/接口和抽象类.md",
@@ -221,7 +222,6 @@
     "Java后端/集合/Map/TreeMap.md",
     "Java后端/集合/Collection/Set(实现类)/TreeSet.md",
     "Java后端/集合/Map",
-    "Java后端/集合/Collection/Collection.md",
     "Java后端/集合/Collection/Set(实现类)/红黑树.md",
     "Java后端/集合/Collection/Set(实现类)/二叉树.md",
     "Java后端/集合/Collection/Set(实现类)/HashSet/LinkedHashSet.md",
