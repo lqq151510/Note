@@ -66,6 +66,16 @@
           "answer": "在Java中，`HashSet` 底层是基于 `HashMap` 实现的，而 `HashMap` 在JDK 1.8之后采用了 **链表和红黑树结合** 的结构来优化性能。以下是具体的使用场景：\n\n---\n\n### **1. 使用链表的情况**\n   - **初始存储**：当元素首次被插入到某个哈希桶（bucket）时，会以**链表**形式存储。\n   - **哈希冲突较少**：如果某个桶中的元素数量较少（默认阈值以下），即使发生哈希冲突，也继续使用链表存储。\n   - **性能考虑**：链表在元素较少时，插入和删除操作更高效（直接操作指针）。\n\n---\n\n### **2. 转换为红黑树的情况**\n   - **链表长度达到阈值**：当某个桶中的链表长度超过 **8** 时，如果当前哈希表的总容量（`capacity`）大于等于 **64**，链表会自动转换为**红黑树**。\n   - **原因**：链表过长会导致查询效率下降（`O(n)`），而红黑树能将查找、插入、删除的时间复杂度优化到 `O(log n)`。\n   - **避免哈希碰撞攻击**：防止恶意数据导致链表过长，影响性能。\n\n---\n\n### **3. 退化为链表的情况**\n   - **红黑树节点减少**：当红黑树中的节点数减少到 **6** 时，红黑树会退化为链表。\n   - **原因**：节点较少时，红黑树的平衡操作开销可能大于链表，退化可以节省内存和性能。\n\n---\n\n### **关键参数（JDK 1.8+）**\n   - `TREEIFY_THRESHOLD = 8`：链表转红黑树的阈值。\n   - `UNTREEIFY_THRESHOLD = 6`：红黑树退化为链表的阈值。\n   - `MIN_TREEIFY_CAPACITY = 64`：允许树化的最小哈希表容量。\n\n---\n\n### **例子说明**\n```java\nHashSet<String> set = new HashSet<>();\n// 当插入第9个哈希冲突的元素到同一桶时，如果表容量≥64，链表转红黑树\n// 当删除元素使红黑树节点≤6时，退化为链表\n```\n\n### **总结**\n- **链表**：适用于元素较少的情况，简单高效。\n- **红黑树**：应对哈希冲突严重的情况，保证性能稳定。\n- 转换由JDK自动处理，开发者无需手动干预。"
         }
       ]
+    },
+    "2026-01-30": {
+      "num": 1,
+      "prompt_content": [
+        {
+          "id_timestamp": "1769771240473",
+          "prompt": "Integer.parseInt\n",
+          "answer": "`Integer.parseInt()` 是 Java 中的一个静态方法，用于将字符串参数转换为对应的整数值（`int` 类型）。\n\n---\n\n### **基本语法**\n```java\npublic static int parseInt(String s) throws NumberFormatException\npublic static int parseInt(String s, int radix) throws NumberFormatException\n```\n\n---\n\n### **参数说明**\n1. **`String s`**  \n   - 要转换的字符串，必须表示一个有效的整数（例如 `\"123\"`、`\"-45\"`）。\n   - 允许开头有正负号（`+` 或 `-`）。\n\n2. **`int radix`**（可选）  \n   - 进制基数，范围是 `2` 到 `36`。\n   - 默认为十进制（`radix=10`）。\n\n---\n\n### **返回值**\n- 返回字符串对应的 `int` 值。\n- 如果字符串无法解析为整数，抛出 `NumberFormatException`。\n\n---\n\n### **示例用法**\n```java\n// 1. 十进制转换\nint num1 = Integer.parseInt(\"123\");      // 123\nint num2 = Integer.parseInt(\"-456\");     // -456\n\n// 2. 指定进制转换\nint binary = Integer.parseInt(\"1010\", 2);   // 二进制转十进制 → 10\nint hex = Integer.parseInt(\"FF\", 16);       // 十六进制转十进制 → 255\n\n// 3. 错误示例（会抛出异常）\nint error = Integer.parseInt(\"12.3\");      // 小数无效\nint error2 = Integer.parseInt(\"ABC\");      // 非数字字符（十进制下无效）\n```\n\n---\n\n### **常见异常处理**\n```java\ntry {\n    int num = Integer.parseInt(\"123abc\");\n} catch (NumberFormatException e) {\n    System.out.println(\"字符串格式错误！\");\n}\n```\n\n---\n\n### **注意事项**\n1. **空字符串或 `null`**  \n   - `parseInt(\"\")` 会抛出 `NumberFormatException`。  \n   - `parseInt(null)` 会抛出 `NullPointerException`。\n\n2. **范围限制**  \n   - 转换后的值必须在 `int` 范围内（`-2^31` 到 `2^31-1`），否则会抛出异常。  \n   - 对于超出范围的值，可使用 `Long.parseLong()` 或 `BigInteger`。\n\n3. **与 `Integer.valueOf()` 的区别**  \n   - `parseInt()` 返回 `int`（基本类型）。  \n   - `valueOf()` 返回 `Integer` 对象（包装类），可能使用缓存（`-128` 到 `127`）。\n\n---\n\n### **替代方法**\n- 对于更灵活的解析（如包含空格），可结合 `Scanner` 或正则表达式。\n- Java 8+ 推荐使用 `OptionalInt` 和异常处理结合的方式避免显式异常。\n\n如果需要进一步探讨具体使用场景或问题，请补充说明！"
+        }
+      ]
     }
   }
 }

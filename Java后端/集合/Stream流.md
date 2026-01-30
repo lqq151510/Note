@@ -23,7 +23,7 @@ Stream API是Java 8引入的一个重要特性，它提供了一种高效且易�
 - `distinct()`：去重
 - `limit(long)`：限制元素数量
 - `skip(long)`：跳过元素
-
+[Integer.parseInt](obsidian://deepseek-ai-assistant?id=1769771240473 "Open plugin:deepseek-ai-assistant")
 ### 2. 终端操作（Terminal Operations）
 
 终端操作会触发Stream的处理，并返回结果或产生副作用。
