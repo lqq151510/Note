@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java后端/异常.md",
+                "file": "Java后端/文件/成员方法(判断,获取).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "异常"
+              "title": "成员方法(判断,获取)"
             }
           }
         ]
@@ -195,11 +195,14 @@
       "deepseek-ai-assistant:Open deepseek AI assistant": false
     }
   },
-  "active": "066d8ed5010e66ea",
+  "active": "00759b9f3375539f",
   "lastOpenFiles": [
+    "Markdown 文档.md",
+    "Java后端/文件/成员方法(判断,获取).md",
+    "Java后端/文件/File 类.md",
+    "Java后端/异常.md",
     "Java后端/文件",
     "leecode/100题/4.移动零.md",
-    "Java后端/异常.md",
     "Java后端/方法引用/数组构造方法.md",
     "Java后端/方法引用/成员方法(实例对象).md",
     "Java后端/方法引用/成员方法(类名).md",
@@ -225,13 +228,10 @@
     "Java后端/面向对象/Java静态变量、静态方法和工具类.md",
     "Java后端/字符串/Stringjoiner的基本操作.md",
     "Java后端/集合/Collection/List(接口）/ArrayList.md",
-    "Java后端/字符串/StringBuilder的基本操作.md",
-    "Java后端/字符串/字符串常用方法.md",
     "Java后端/字符串",
     "Java后端/面向对象",
     "Java后端/集合/Map",
     "Java后端/Maven",
-    "前端/Vue 3",
-    "Java后端/基础"
+    "前端/Vue 3"
   ]
 }
