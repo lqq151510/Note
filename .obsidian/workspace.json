@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java后端/方法引用/成员方法.md",
+                "file": "Java后端/方法引用/成员方法(实例对象).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "成员方法"
+              "title": "成员方法(实例对象)"
             }
           }
         ]
@@ -195,10 +195,12 @@
       "deepseek-ai-assistant:Open deepseek AI assistant": false
     }
   },
-  "active": "066d8ed5010e66ea",
+  "active": "00759b9f3375539f",
   "lastOpenFiles": [
+    "Java后端/方法引用/成员方法(类名).md",
+    "Java后端/方法引用/成员方法(实例对象).md",
+    "Java后端/方法引用/构造方法引用.md",
     "Java后端/方法引用/静态方法.md",
-    "Java后端/方法引用/成员方法.md",
     "Java后端/集合/Stream流.md",
     "Java后端/方法引用/方法引用.md",
     "leecode/100题/1.两数之和.md",
@@ -227,8 +229,6 @@
     "Java后端/面向对象",
     "Java后端/集合/Map/Map.md",
     "Java后端/集合/Map/双列集合的特点.md",
-    "Java后端/集合/Map/TreeMap.md",
-    "Java后端/集合/Collection/Set(实现类)/TreeSet.md",
     "Java后端/集合/Map",
     "Java后端/Maven",
     "前端/Vue 3",
