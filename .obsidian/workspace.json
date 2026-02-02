@@ -11,14 +11,10 @@
             "id": "00759b9f3375539f",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Java后端/io流/文件拷贝.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "文件拷贝"
+              "title": "新标签页"
             }
           }
         ]
@@ -195,14 +191,15 @@
       "deepseek-ai-assistant:Open deepseek AI assistant": false
     }
   },
-  "active": "066d8ed5010e66ea",
+  "active": "00759b9f3375539f",
   "lastOpenFiles": [
+    "Java后端/io流/文件拷贝.md",
+    "leecode/100题/哈希表/最长连续序列.md",
     "leecode/100题/双指针",
     "leecode/100题/哈希表",
     "leecode/100题/哈希表/1.两数之和.md",
     "leecode/100题/双指针/49.解决字母异位词.md",
     "leecode/100题/哈希表/4.移动零.md",
-    "Java后端/io流/文件拷贝.md",
     "Java后端/io流/字节输入流.md",
     "Java后端/io流/字节输出流.md",
     "Java后端/io流/IO流定义和分类.md",
@@ -231,7 +228,6 @@
     "Java后端/集合/Collection/Collection.md",
     "Java后端/集合/集合进阶/Collections.md",
     "Java后端/集合/集合进阶",
-    "Java后端/字符串",
-    "Java后端/面向对象"
+    "Java后端/字符串"
   ]
 }
