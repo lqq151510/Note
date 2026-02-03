@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java后端/多线程.md",
+                "file": "Java后端/什么是多线程.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "多线程"
+              "title": "什么是多线程"
             }
           }
         ]
@@ -197,7 +197,7 @@
   },
   "active": "2ff0fb82503c07b6",
   "lastOpenFiles": [
-    "Java后端/多线程.md",
+    "Java后端/什么是多线程.md",
     "Java后端/io流/压缩流.md",
     "Java后端/io流/解压缩流.md",
     "Java后端/io流/转换流.md",
