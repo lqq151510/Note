@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java后端/什么是多线程.md",
+                "file": "Java后端/多线程/并发和并行.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "什么是多线程"
+              "title": "并发和并行"
             }
           }
         ]
@@ -195,9 +195,11 @@
       "deepseek-ai-assistant:Open deepseek AI assistant": false
     }
   },
-  "active": "2ff0fb82503c07b6",
+  "active": "066d8ed5010e66ea",
   "lastOpenFiles": [
-    "Java后端/什么是多线程.md",
+    "Java后端/多线程/什么是多线程.md",
+    "Java后端/多线程/并发和并行.md",
+    "Java后端/多线程",
     "Java后端/io流/压缩流.md",
     "Java后端/io流/解压缩流.md",
     "Java后端/io流/转换流.md",
@@ -227,11 +229,9 @@
     "leecode/探险模式",
     "leecode/未命名.md",
     "Java后端/文件/成员方法(创建和删除).md",
-    "Java后端/文件/成员方法(判断,获取).md",
     "Java后端/文件",
     "Java后端/方法引用",
     "leecode/100题",
-    "leecode",
-    "Java后端/集合/集合进阶"
+    "leecode"
   ]
 }
