@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java后端/Spring boot/8.控制反转.md",
+                "file": "leecode/100题/动态规划/118.杨辉三角.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "8.控制反转"
+              "title": "118.杨辉三角"
             }
           }
         ]
@@ -197,8 +197,9 @@
   },
   "active": "2ff0fb82503c07b6",
   "lastOpenFiles": [
-    "Java后端/Spring boot/10.分层解耦.md",
     "Java后端/Spring boot/8.控制反转.md",
+    "leecode/100题/动态规划/118.杨辉三角.md",
+    "Java后端/Spring boot/10.分层解耦.md",
     "Java后端/Spring boot/9.依赖注入.md",
     "Java后端/Spring boot/7.加载资源文件.md",
     "Java后端/Spring boot/6.Lombok.md",
@@ -225,7 +226,6 @@
     "Java后端/反射/构造方法.md",
     "Java后端/反射/未命名",
     "Java后端/反射/反射机制.md",
-    "Java后端/网络编程/TCP通信.md",
     "Java后端/反射",
     "Java后端/网络编程/未命名",
     "Java后端/网络编程",
