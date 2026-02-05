@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java后端/Spring boot/3.HTTP请求.md",
+                "file": "Java后端/Spring boot/未命名.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "3.HTTP请求"
+              "title": "未命名"
             }
           }
         ]
@@ -198,6 +198,7 @@
   "active": "2ff0fb82503c07b6",
   "lastOpenFiles": [
     "Java后端/Spring boot/2.控制器类.md",
+    "Java后端/Spring boot/未命名.md",
     "Java后端/Spring boot/3.HTTP请求.md",
     "Java后端/Spring boot/1.什么是Spring Boot.md",
     "Java后端/Maven/依赖范围.md",
@@ -228,7 +229,6 @@
     "Java后端/网络编程",
     "Java后端/未命名.md",
     "Java后端/多线程/自定义线程池.md",
-    "leecode/探险模式/1.数组串联.md",
     "Java后端/多线程/未命名",
     "Java后端/多线程",
     "leecode/100题/动态规划",
