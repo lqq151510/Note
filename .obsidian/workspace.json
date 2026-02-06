@@ -20,8 +20,21 @@
               "icon": "lucide-file",
               "title": "11.控制器注解"
             }
+          },
+          {
+            "id": "52dacb87ec8ce514",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.11.7"
+              },
+              "icon": "lucide-book-up",
+              "title": "版本说明 1.11.7"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -195,7 +208,7 @@
       "deepseek-ai-assistant:Open deepseek AI assistant": false
     }
   },
-  "active": "2ff0fb82503c07b6",
+  "active": "52dacb87ec8ce514",
   "lastOpenFiles": [
     "leecode/100题/动态规划/118.杨辉三角.md",
     "Java后端/Spring boot/11.控制器注解.md",
