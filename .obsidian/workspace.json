@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java后端/Mybatis/数据库连接池.md",
+                "file": "Java后端/Mybatis/XML 映射文件.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "数据库连接池"
+              "title": "XML 映射文件"
             }
           }
         ]
@@ -197,8 +197,10 @@
   },
   "active": "2ff0fb82503c07b6",
   "lastOpenFiles": [
-    "Java后端/多线程/Callable.md",
+    "Java后端/Mybatis/MyBatis配置.md",
+    "Java后端/Mybatis/XML 映射文件.md",
     "Java后端/Mybatis/数据库连接池.md",
+    "Java后端/多线程/Callable.md",
     "Java后端/多线程/并发和并行.md",
     "Java后端/多线程/成员方法.md",
     "Java后端/多线程/Runnable接口.md",
@@ -218,13 +220,11 @@
     "Java后端/多线程/线程优先级.md",
     "Java后端/多线程/自定义线程池.md",
     "Java后端/多线程/死锁.md",
-    "Java后端/Mybatis/MyBatis配置.md",
     "Java后端/Mybatis/预编译 SQL.md",
     "Java后端/Spring boot/12.相同类型bean.md",
     "Java后端/Mybatis",
     "Java后端/Spring boot/9.依赖注入.md",
     "Java后端/Spring boot/10.分层解耦.md",
-    "Java后端/Spring boot/11.控制器注解.md",
     "Java后端/Spring boot",
     "leecode/100题/栈",
     "Java后端/反射/未命名",
