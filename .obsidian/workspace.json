@@ -195,8 +195,9 @@
       "deepseek-ai-assistant:Open deepseek AI assistant": false
     }
   },
-  "active": "2ff0fb82503c07b6",
+  "active": "066d8ed5010e66ea",
   "lastOpenFiles": [
+    "Java后端/开发规范",
     "leecode/100题/链表/206.反转链表.md",
     "Java后端/Spring boot/配置文件.md",
     "leecode/100题/链表/160.相交链表.md",
@@ -225,7 +226,6 @@
     "Java后端/多线程/线程生命周期.md",
     "Java后端/多线程/线程优先级.md",
     "Java后端/多线程/自定义线程池.md",
-    "Java后端/多线程/死锁.md",
     "Java后端/Mybatis",
     "Java后端/Spring boot",
     "leecode/100题/栈",
