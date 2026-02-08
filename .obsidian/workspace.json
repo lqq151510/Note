@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java后端/开发规范/RESTful.md",
+                "file": "Java后端/Spring boot/11.控制器注解.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "RESTful"
+              "title": "11.控制器注解"
             }
           }
         ]
@@ -197,9 +197,19 @@
   },
   "active": "2ff0fb82503c07b6",
   "lastOpenFiles": [
-    "Java后端/开发规范/接口文档.md",
-    "Java后端/开发规范/RESTful.md",
+    "Java后端/Spring boot/10.分层解耦.md",
+    "Java后端/Spring boot/1.什么是Spring Boot.md",
+    "Java后端/Spring boot/2.控制器类.md",
+    "Java后端/Spring boot/4.HTTP响应.md",
+    "Java后端/Spring boot/12.相同类型bean.md",
     "Java后端/Spring boot/配置文件.md",
+    "Java后端/Spring boot/11.控制器注解.md",
+    "Java后端/Spring boot/9.依赖注入.md",
+    "Java后端/Spring boot/8.控制反转.md",
+    "Java后端/Spring boot/7.加载资源文件.md",
+    "Java后端/Spring boot/6.Lombok.md",
+    "Java后端/开发规范/RESTful.md",
+    "Java后端/开发规范/接口文档.md",
     "Java后端/开发规范",
     "leecode/100题/链表/206.反转链表.md",
     "leecode/100题/链表/160.相交链表.md",
@@ -217,16 +227,6 @@
     "Java后端/多线程/插入线程.md",
     "Java后端/多线程/等待唤醒机制.md",
     "Java后端/多线程/等待唤醒机制(阻塞队列).md",
-    "Java后端/多线程/继承 Thread类.md",
-    "Java后端/多线程/扩展.md",
-    "Java后端/多线程/礼让线程.md",
-    "Java后端/多线程/什么是多线程.md",
-    "Java后端/多线程/守护线程.md",
-    "Java后端/多线程/同步代码块.md",
-    "Java后端/多线程/同步方法.md",
-    "Java后端/多线程/线程池.md",
-    "Java后端/多线程/线程生命周期.md",
-    "Java后端/多线程/线程优先级.md",
     "Java后端/Mybatis",
     "Java后端/Spring boot",
     "leecode/100题/栈",
