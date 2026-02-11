@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java后端/Spring boot/全局异常处理器.md",
+                "file": "Java后端/Spring boot/JWT.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "全局异常处理器"
+              "title": "JWT"
             }
           }
         ]
@@ -197,8 +197,10 @@
   },
   "active": "2ff0fb82503c07b6",
   "lastOpenFiles": [
+    "Java后端/Spring boot/16.登录校验.md",
+    "Java后端/Spring boot/JWT.md",
+    "Java后端/Spring boot/15.全局异常处理器.md",
     "Java后端/Spring boot/14.事务.md",
-    "Java后端/Spring boot/全局异常处理器.md",
     "数据库/MySQL/@Options.md",
     "数据库/MySQL/动态SQL.md",
     "数据库/MySQL/多表连接.md",
@@ -222,8 +224,6 @@
     "Java后端/Spring boot/8.控制反转.md",
     "Java后端/Spring boot/7.加载资源文件.md",
     "Java后端/Spring boot/6.Lombok.md",
-    "Java后端/开发规范/RESTful.md",
-    "Java后端/开发规范/接口文档.md",
     "Java后端/开发规范",
     "leecode/100题/链表",
     "leecode/100题/二分查找",
