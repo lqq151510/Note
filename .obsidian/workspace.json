@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java后端/Spring boot/JWT.md",
+                "file": "Java后端/Spring boot/17.JWT.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "JWT"
+              "title": "17.JWT"
             }
           }
         ]
@@ -198,7 +198,7 @@
   "active": "2ff0fb82503c07b6",
   "lastOpenFiles": [
     "Java后端/Spring boot/16.登录校验.md",
-    "Java后端/Spring boot/JWT.md",
+    "Java后端/Spring boot/17.JWT.md",
     "Java后端/Spring boot/15.全局异常处理器.md",
     "Java后端/Spring boot/14.事务.md",
     "数据库/MySQL/@Options.md",
