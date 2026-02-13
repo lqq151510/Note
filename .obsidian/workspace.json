@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "leecode/100题/树/226. 翻转二叉树.md",
+                "file": "Docker/4.Docker Compose.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "226. 翻转二叉树"
+              "title": "4.Docker Compose"
             }
           }
         ]
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "leecode/100题/树/226. 翻转二叉树.md",
+                "file": "Docker/4.Docker Compose.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "226. 翻转二叉树 的大纲"
+              "title": "4.Docker Compose 的大纲"
             }
           },
           {
@@ -197,8 +197,9 @@
   },
   "active": "2ff0fb82503c07b6",
   "lastOpenFiles": [
-    "leecode/100题/链表/234.回文链表.md",
     "leecode/100题/树/226. 翻转二叉树.md",
+    "Docker/4.Docker Compose.md",
+    "leecode/100题/链表/234.回文链表.md",
     "leecode/100题/二分查找/35.搜索插入位置.md",
     "leecode/100题/栈/20.有效的括号.md",
     "leecode/100题/双指针/15.三数之和.md",
@@ -227,7 +228,6 @@
     "Java后端/Maven/聚合.md",
     "Java后端/Maven/分模块设计.md",
     "leecode/100题/链表/2.两数相加.md",
-    "Java后端/Spring boot/20.自动配置.md",
     "数据库/MySQL",
     "Java后端/开发规范",
     "leecode/100题/链表",
