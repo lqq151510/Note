@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Linux/4.查找文件.md",
+                "file": "Docker/1.什么是Docker.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "4.查找文件"
+              "title": "1.什么是Docker"
             }
           }
         ]
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Linux/4.查找文件.md",
+                "file": "Docker/1.什么是Docker.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "4.查找文件 的大纲"
+              "title": "1.什么是Docker 的大纲"
             }
           },
           {
@@ -195,10 +195,13 @@
       "deepseek-ai-assistant:Open deepseek AI assistant": false
     }
   },
-  "active": "224210147fa316c1",
+  "active": "2ff0fb82503c07b6",
   "lastOpenFiles": [
-    "Linux/3.文本编辑.md",
+    "Linux/5.部署项目.md",
+    "Docker/1.什么是Docker.md",
+    "Docker",
     "Linux/4.查找文件.md",
+    "Linux/3.文本编辑.md",
     "Linux/2.文件拷贝,移动与打包压缩.md",
     "Linux/1.目录和文件操作.md",
     "Linux/未命名",
@@ -225,13 +228,10 @@
     "数据库/MySQL/@Options.md",
     "数据库/MySQL/动态SQL.md",
     "数据库/MySQL/多表连接.md",
-    "leecode/100题/链表/21. 合并两个有序链表.md",
-    "leecode/100题/链表/142. 环形链表II.md",
     "数据库/MySQL",
     "Java后端/开发规范",
     "leecode/100题/链表",
     "leecode/100题/二分查找",
-    "Java后端/多线程/未命名",
-    "Java后端/Mybatis"
+    "Java后端/多线程/未命名"
   ]
 }
