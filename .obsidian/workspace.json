@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "leecode/100题/链表/141. 环形链表.md",
+                "file": "leecode/100题/二分查找/34. 在排序数组中查找元素的第一个和最后一个位置.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "141. 环形链表"
+              "title": "34. 在排序数组中查找元素的第一个和最后一个位置"
             }
           }
         ]
@@ -197,6 +197,7 @@
   },
   "active": "2ff0fb82503c07b6",
   "lastOpenFiles": [
+    "leecode/100题/链表/141. 环形链表.md",
     "leecode/100题/链表/234.回文链表.md",
     "leecode/100题/链表/2.两数相加.md",
     "leecode/100题/链表/21. 合并两个有序链表.md",
@@ -222,7 +223,6 @@
     "Java后端/Spring boot/10.分层解耦.md",
     "Java后端/Spring boot/11.控制器注解.md",
     "Java后端/Spring boot/12.相同类型bean.md",
-    "Java后端/Spring boot/20.自动配置.md",
     "Nginx",
     "Docker",
     "Linux/未命名",
