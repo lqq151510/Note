@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "数据库/Redis/5.List.md",
+                "file": "数据库/Redis/6.Set.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "5.List"
+              "title": "6.Set"
             }
           }
         ]
@@ -197,8 +197,9 @@
   },
   "active": "2ff0fb82503c07b6",
   "lastOpenFiles": [
-    "数据库/Redis/4.Hash.md",
     "数据库/Redis/5.List.md",
+    "数据库/Redis/6.Set.md",
+    "数据库/Redis/4.Hash.md",
     "数据库/Redis/3.String.md",
     "数据库/Redis/2.常见数据类型.md",
     "数据库/MySQL/@Options.md",
@@ -222,7 +223,6 @@
     "leecode/100题/哈希表/1.两数之和.md",
     "leecode/100题/树/543.二叉树直径.md",
     "Nginx/Nginx 的作用和好处.md",
-    "leecode/100题/树/未命名.md",
     "Nginx",
     "Docker",
     "Linux/未命名",
