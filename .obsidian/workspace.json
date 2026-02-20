@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "leecode/100题/二分查找/34. 在排序数组中查找元素的第一个和最后一个位置.md",
+                "file": "leecode/100题/链表/141. 环形链表.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "34. 在排序数组中查找元素的第一个和最后一个位置"
+              "title": "141. 环形链表"
             }
           }
         ]
@@ -197,8 +197,11 @@
   },
   "active": "2ff0fb82503c07b6",
   "lastOpenFiles": [
-    "leecode/100题/二分查找/74.搜索二维矩阵.md",
+    "leecode/100题/链表/234.回文链表.md",
+    "leecode/100题/链表/2.两数相加.md",
+    "leecode/100题/链表/21. 合并两个有序链表.md",
     "leecode/100题/二分查找/34. 在排序数组中查找元素的第一个和最后一个位置.md",
+    "leecode/100题/二分查找/74.搜索二维矩阵.md",
     "Java后端/异常.md",
     "Java后端/Spring boot/25.HttpClient.md",
     "数据库/Redis/8.通用命令.md",
@@ -220,9 +223,6 @@
     "Java后端/Spring boot/11.控制器注解.md",
     "Java后端/Spring boot/12.相同类型bean.md",
     "Java后端/Spring boot/20.自动配置.md",
-    "Java后端/Spring boot/18.Spring AOP.md",
-    "Java后端/Spring boot/19.Bean管理.md",
-    "Java后端/Spring boot/21.Swagger.md",
     "Nginx",
     "Docker",
     "Linux/未命名",
