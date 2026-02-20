@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "数据库/Redis/8.通用命令.md",
+                "file": "Java后端/Spring boot/25.HttpClient.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "8.通用命令"
+              "title": "25.HttpClient"
             }
           }
         ]
@@ -197,8 +197,9 @@
   },
   "active": "2ff0fb82503c07b6",
   "lastOpenFiles": [
-    "数据库/Redis/7.Sorted Set.md",
     "数据库/Redis/8.通用命令.md",
+    "Java后端/Spring boot/25.HttpClient.md",
+    "数据库/Redis/7.Sorted Set.md",
     "数据库/Redis/6.Set.md",
     "数据库/Redis/5.List.md",
     "数据库/Redis/4.Hash.md",
@@ -222,7 +223,6 @@
     "Docker/4.Docker Compose.md",
     "Linux/5.部署项目.md",
     "leecode/100题/双指针/4.移动零.md",
-    "leecode/100题/哈希表/1.两数之和.md",
     "Nginx",
     "Docker",
     "Linux/未命名",
