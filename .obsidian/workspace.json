@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "大模型/2.提示词.md",
+                "file": "大模型/3.RAG.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2.提示词"
+              "title": "3.RAG"
             }
           }
         ]
@@ -180,7 +180,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 293.5
+    "width": 400.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -197,8 +197,9 @@
   },
   "active": "2ff0fb82503c07b6",
   "lastOpenFiles": [
-    "大模型/1.AI Agent.md",
     "大模型/2.提示词.md",
+    "大模型/3.RAG.md",
+    "大模型/1.AI Agent.md",
     "Java后端/Spring boot/31.ThreadLocal.md",
     "大模型",
     "Java后端/Spring boot/30.Apache POI.md",
@@ -223,7 +224,6 @@
     "数据库/Redis/4.Hash.md",
     "数据库/Redis/3.String.md",
     "数据库/Redis/2.常见数据类型.md",
-    "数据库/MySQL/@Options.md",
     "Nginx",
     "Docker",
     "Linux/未命名",
