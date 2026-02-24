@@ -195,8 +195,10 @@
       "deepseek-ai-assistant:Open deepseek AI assistant": false
     }
   },
-  "active": "2ff0fb82503c07b6",
+  "active": "066d8ed5010e66ea",
   "lastOpenFiles": [
+    "Java后端/Mybatis-plus",
+    "Java后端/spring cloud",
     "leecode/100题/栈/155. 最小栈.md",
     "leecode/100题/栈/739.每日温度.md",
     "大模型/3.RAG.md",
@@ -223,7 +225,6 @@
     "Java后端/异常.md",
     "数据库/Redis/8.通用命令.md",
     "数据库/Redis/7.Sorted Set.md",
-    "数据库/Redis/6.Set.md",
     "Nginx",
     "Docker",
     "Linux/未命名",
@@ -231,7 +232,6 @@
     "leecode/100题/树",
     "前端/Vue 3/未命名",
     "数据库/MySQL",
-    "Java后端/开发规范",
-    "leecode/100题/链表"
+    "Java后端/开发规范"
   ]
 }
