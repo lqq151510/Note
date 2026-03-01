@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java后端/Mybatis-plus/2.条件构造器.md",
+                "file": "Java后端/Mybatis-plus/2.条件构造器(单表查询).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2.条件构造器"
+              "title": "2.条件构造器(单表查询)"
             }
           }
         ]
@@ -198,7 +198,7 @@
   "active": "2ff0fb82503c07b6",
   "lastOpenFiles": [
     "Java后端/Mybatis-plus/1.MyBatis-Plus.md",
-    "Java后端/Mybatis-plus/2.条件构造器.md",
+    "Java后端/Mybatis-plus/2.条件构造器(单表查询).md",
     "Java后端/Spring boot/28.WebSocket 和 HttpClient.md",
     "Java后端/Spring boot/31.ThreadLocal.md",
     "Java后端/Spring boot/14.事务.md",
