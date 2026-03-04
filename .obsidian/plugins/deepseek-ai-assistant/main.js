@@ -44,21 +44,129 @@ var DeepSeekAIAssistant_SettingTab = class extends import_obsidian.PluginSetting
   display() {
     const { containerEl } = this;
     containerEl.empty();
-    new import_obsidian.Setting(containerEl).setName("API key").setDesc("Get your API key from https://platform.deepseek.com").addText((text) => text.setValue(this.plugin.settings.API_KEY).onChange(async (value) => {
-      this.plugin.settings.API_KEY = value;
-      await this.plugin.saveSettings();
+    containerEl.createEl("h1", { text: "AI Assistant Models" });
+    containerEl.createEl("p", { text: "Configure different AI models with their specific settings.", cls: "setting-item-description" });
+    const models = this.plugin.settings.models || [];
+    if (!this.plugin.settings.models && this.plugin.settings.customModels) {
+    }
+    models.forEach((model, index3) => {
+      const setting = new import_obsidian.Setting(containerEl).setName(model.name).setDesc(document.createDocumentFragment());
+      const desc = setting.descEl;
+      desc.createSpan({ text: model.modelId });
+      if (model.providerUrl) {
+        desc.createSpan({ text: " \xB7 " });
+        desc.createEl("a", { text: "Dashboard", href: model.providerUrl }).setAttribute("target", "_blank");
+      }
+      setting.addButton((button) => button.setIcon("pencil").setTooltip("Edit Model").onClick(() => {
+        new ModelEditModal(this.plugin.app, model, async (updatedModel) => {
+          this.plugin.settings.models[index3] = updatedModel;
+          await this.plugin.saveSettings();
+          this.display();
+        }).open();
+      })).addButton((button) => button.setIcon("trash").setTooltip("Remove Model").setWarning().onClick(async () => {
+        if (confirm(`Are you sure you want to delete "${model.name}"?`)) {
+          this.plugin.settings.models.splice(index3, 1);
+          await this.plugin.saveSettings();
+          this.display();
+        }
+      }));
+    });
+    new import_obsidian.Setting(containerEl).setName("Add New Model").setDesc("Add a new configuration for an AI model.").addButton((button) => button.setButtonText("Add Model").setCta().onClick(() => {
+      const newModelTemplate = {
+        id: crypto.randomUUID(),
+        name: "New Model",
+        modelId: "",
+        apiKey: "",
+        apiUrl: "https://api.openai.com/v1",
+        // Common default
+        providerUrl: ""
+      };
+      new ModelEditModal(this.plugin.app, newModelTemplate, async (newModel) => {
+        if (!this.plugin.settings.models)
+          this.plugin.settings.models = [];
+        this.plugin.settings.models.push(newModel);
+        await this.plugin.saveSettings();
+        this.display();
+      }).open();
     }));
-    new import_obsidian.Setting(containerEl).setName("API URL").setDesc("The default API server address does not require modification.").addText((text) => text.setPlaceholder("https://api.openai.com/v1").setValue(this.plugin.settings.API_URL).onChange(async (value) => {
-      this.plugin.settings.API_URL = value;
-      await this.plugin.saveSettings();
+  }
+};
+var ModelEditModal = class extends import_obsidian.Modal {
+  model;
+  onSubmit;
+  constructor(app, model, onSubmit) {
+    super(app);
+    this.model = JSON.parse(JSON.stringify(model));
+    this.onSubmit = onSubmit;
+  }
+  onOpen() {
+    const { contentEl } = this;
+    contentEl.empty();
+    this.titleEl.setText("Edit Model Configuration");
+    const formDiv = contentEl.createDiv({ cls: "model-edit-form" });
+    new import_obsidian.Setting(formDiv).setName("Display Name").setDesc("Name shown in the chat dropdown.").addText((text) => text.setValue(this.model.name).onChange((value) => {
+      this.model.name = value;
     }));
+    new import_obsidian.Setting(formDiv).setName("Model ID").setDesc("The internal model string used by the API (e.g., deepseek-chat, gpt-4).").addText((text) => text.setValue(this.model.modelId).onChange((value) => {
+      this.model.modelId = value;
+    }));
+    new import_obsidian.Setting(formDiv).setName("API URL").setDesc("Base URL for the API.").addText((text) => text.setPlaceholder("https://api.deepseek.com").setValue(this.model.apiUrl).onChange((value) => {
+      this.model.apiUrl = value;
+    }));
+    new import_obsidian.Setting(formDiv).setName("API Key").setDesc("Your secret API Key.").addText((text) => {
+      text.inputEl.type = "password";
+      text.setValue(this.model.apiKey).onChange((value) => {
+        this.model.apiKey = value;
+      });
+    });
+    new import_obsidian.Setting(formDiv).setName("Provider Dashboard URL (Optional)").setDesc("Link to the provider's console for managing keys/billing.").addText((text) => text.setPlaceholder("https://platform.openai.com/").setValue(this.model.providerUrl || "").onChange((value) => {
+      this.model.providerUrl = value;
+    }));
+    const buttonDiv = contentEl.createDiv({ cls: "model-edit-buttons" });
+    buttonDiv.style.marginTop = "20px";
+    buttonDiv.style.display = "flex";
+    buttonDiv.style.justifyContent = "flex-end";
+    buttonDiv.style.gap = "10px";
+    const saveBtn = buttonDiv.createEl("button", { text: "Save", cls: "mod-cta" });
+    saveBtn.onclick = () => {
+      if (!this.model.name || !this.model.modelId) {
+        new import_obsidian.Notice("Name and Model ID are required.");
+        return;
+      }
+      this.onSubmit(this.model);
+      this.close();
+    };
+    const cancelBtn = buttonDiv.createEl("button", { text: "Cancel" });
+    cancelBtn.onclick = () => {
+      this.close();
+    };
+  }
+  onClose() {
+    const { contentEl } = this;
+    contentEl.empty();
   }
 };
 
 // src/settings.ts
 var DEFAULT_SETTINGS = {
-  API_KEY: "",
-  API_URL: "https://api.deepseek.com",
+  models: [
+    {
+      id: "default-deepseek-r1",
+      name: "DeepSeek R1",
+      modelId: "deepseek-reasoner",
+      apiKey: "",
+      apiUrl: "https://api.deepseek.com",
+      providerUrl: "https://platform.deepseek.com/"
+    },
+    {
+      id: "default-deepseek-v3",
+      name: "DeepSeek V3",
+      modelId: "deepseek-chat",
+      apiKey: "",
+      apiUrl: "https://api.deepseek.com",
+      providerUrl: "https://platform.deepseek.com/"
+    }
+  ],
   promptStats: {}
 };
 
@@ -14686,7 +14794,7 @@ OpenAI.EvalListResponsesPage = EvalListResponsesPage;
 OpenAI.Containers = Containers;
 OpenAI.ContainerListResponsesPage = ContainerListResponsesPage;
 
-// sfc-script:/Users/mali/Desktop/projects/dev-vault/.obsidian/plugins/deepseek-ai-assistant/src/components/AICard.vue?type=script
+// sfc-script:/Users/mali/Desktop/Projects/dev-vault/.obsidian/plugins/deepseek-ai-assistant/src/components/AICard.vue?type=script
 var import_obsidian2 = require("obsidian");
 
 // node_modules/@vue/devtools-shared/dist/index.js
@@ -20414,7 +20522,7 @@ var usePromptStore = defineStore("prompts", () => {
   if (pluginStore.plugin) {
     promptStats.value = { ...pluginStore.plugin.settings.promptStats };
   }
-  async function addPrompt(prompt, answer) {
+  async function addPrompt(prompt, answer, modelName) {
     if (!pluginStore.plugin)
       return;
     const today = (/* @__PURE__ */ new Date()).toISOString().split("T")[0];
@@ -20426,7 +20534,8 @@ var usePromptStore = defineStore("prompts", () => {
     newStats[today].prompt_content.push({
       id_timestamp: Date.now().toString(),
       prompt,
-      answer
+      answer,
+      model: modelName
     });
     promptStats.value = newStats;
     pluginStore.plugin.settings.promptStats = newStats;
@@ -20453,7 +20562,7 @@ var usePromptStore = defineStore("prompts", () => {
   return { promptStats, addPrompt, selectedDate, updateHistoryCard, historyCard, findAndSelectPromptById };
 });
 
-// sfc-template:/Users/mali/Desktop/projects/dev-vault/.obsidian/plugins/deepseek-ai-assistant/src/components/ThinkingClue.vue?type=template
+// sfc-template:/Users/mali/Desktop/Projects/dev-vault/.obsidian/plugins/deepseek-ai-assistant/src/components/ThinkingClue.vue?type=template
 var _hoisted_1 = { class: "flex flex-col items-center justify-center h-full space-y-6" };
 function render(_ctx, _cache) {
   return openBlock(), createElementBlock("div", _hoisted_1, [..._cache[0] || (_cache[0] = [
@@ -20467,7 +20576,7 @@ script.render = render;
 script.__file = "src/components/ThinkingClue.vue";
 var ThinkingClue_default = script;
 
-// sfc-script:/Users/mali/Desktop/projects/dev-vault/.obsidian/plugins/deepseek-ai-assistant/src/components/AICard.vue?type=script
+// sfc-script:/Users/mali/Desktop/Projects/dev-vault/.obsidian/plugins/deepseek-ai-assistant/src/components/AICard.vue?type=script
 var AICard_default = /* @__PURE__ */ defineComponent({
   __name: "AICard",
   props: {
@@ -20476,12 +20585,32 @@ var AICard_default = /* @__PURE__ */ defineComponent({
   setup(__props, { expose: __expose }) {
     __expose();
     const props = __props;
+    const availableModels = ref([]);
+    const updateModels = () => {
+      const models = props.plugin.settings?.models || DEFAULT_SETTINGS.models;
+      availableModels.value = [...models];
+      const exists = availableModels.value.some((m3) => m3.id === chatModel.value);
+      if (!exists && availableModels.value.length > 0) {
+        chatModel.value = availableModels.value[0].id;
+      }
+    };
+    onMounted(() => {
+      updateModels();
+      if (props.plugin.registerSettingsListener) {
+        props.plugin.registerSettingsListener(updateModels);
+      }
+    });
+    onUnmounted(() => {
+      if (props.plugin.unregisterSettingsListener) {
+        props.plugin.unregisterSettingsListener(updateModels);
+      }
+    });
     const inputContent = ref("");
     const isLoading = ref(false);
     const isThinking = ref(false);
     const hasResponse = ref(false);
     const promptStore = usePromptStore();
-    const chatModel = ref("deepseek-reasoner");
+    const chatModel = ref(availableModels.value[0]?.id || "deepseek-reasoner");
     const textareaRef = ref(null);
     const answerContainerRef = ref(null);
     const historyItem = computed2(() => promptStore.historyCard);
@@ -20491,10 +20620,10 @@ var AICard_default = /* @__PURE__ */ defineComponent({
     const adjustHeight = () => {
       const textarea = textareaRef.value;
       if (textarea) {
-        window.requestAnimationFrame(() => {
+        setTimeout(() => {
           textarea.style.height = "auto";
           textarea.style.height = textarea.scrollHeight + "px";
-        });
+        }, 0);
       }
     };
     watch2(inputContent, () => {
@@ -20525,9 +20654,17 @@ var AICard_default = /* @__PURE__ */ defineComponent({
       isThinking.value = true;
       hasResponse.value = false;
       try {
+        const selectedModelConfig = availableModels.value.find((m3) => m3.id === chatModel.value) || availableModels.value[0];
+        if (!selectedModelConfig) {
+          throw new Error("No model configuration found.");
+        }
+        if (!selectedModelConfig.apiKey) {
+          new import_obsidian2.Notice("API Key is missing for the selected model. Please configure it in the settings.");
+          throw new Error("API Key is missing. Please configure it in the settings.");
+        }
         const openai = new OpenAI({
-          apiKey: props.plugin.settings.API_KEY,
-          baseURL: props.plugin.settings.API_URL,
+          apiKey: selectedModelConfig.apiKey,
+          baseURL: selectedModelConfig.apiUrl,
           dangerouslyAllowBrowser: true
         });
         let fullResponse = "";
@@ -20536,7 +20673,8 @@ var AICard_default = /* @__PURE__ */ defineComponent({
             { role: "system", content: "\u4F60\u662F\u4E00\u4E2AAI\u52A9\u624B\uFF0C\u8BF7\u6839\u636E\u7528\u6237\u7684\u95EE\u9898\u7ED9\u51FA\u56DE\u7B54" },
             { role: "user", content: inputContent.value }
           ],
-          model: chatModel.value,
+          model: selectedModelConfig.modelId,
+          // Use the API Model ID from config
           stream: true
         });
         for await (const chunk of completion) {
@@ -20559,16 +20697,24 @@ var AICard_default = /* @__PURE__ */ defineComponent({
           }
         }
         if (fullResponse) {
-          promptStore.addPrompt(inputContent.value, fullResponse);
+          promptStore.addPrompt(inputContent.value, fullResponse, selectedModelConfig.id);
           inputContent.value = "";
           hasResponse.value = true;
         }
       } catch (error) {
         isThinking.value = false;
+        let displayMessage = error.message;
+        if (error.status === 401) {
+          displayMessage = "**API Error 401 (Unauthorized):**\nThe API Key provided is invalid, expired, or missing. Please check your settings and ensure the correct API Key is entered.";
+          new import_obsidian2.Notice("DeepSeek API Error: Invalid API Key (401)");
+        } else if (error.status === 429) {
+          displayMessage = "**API Error 429 (Too Many Requests):**\nYou have exceeded your rate limit or quota. Please check your API provider usage.";
+          new import_obsidian2.Notice("DeepSeek API Error: Rate Limit Exceeded (429)");
+        }
         if (container) {
           await import_obsidian2.MarkdownRenderer.render(
             props.plugin.app,
-            error.message,
+            displayMessage,
             container,
             "/",
             props.plugin.app.workspace.getLeavesOfType("deepseek-ai-assistant-itemview")[0].view
@@ -20579,13 +20725,13 @@ var AICard_default = /* @__PURE__ */ defineComponent({
         isThinking.value = false;
       }
     };
-    const __returned__ = { props, inputContent, isLoading, isThinking, hasResponse, promptStore, chatModel, textareaRef, answerContainerRef, historyItem, historyAnswer, adjustHeight, handleCommand, submit, ThinkingClue: ThinkingClue_default };
+    const __returned__ = { props, availableModels, updateModels, inputContent, isLoading, isThinking, hasResponse, promptStore, chatModel, textareaRef, answerContainerRef, historyItem, historyAnswer, adjustHeight, handleCommand, submit, ThinkingClue: ThinkingClue_default };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
   }
 });
 
-// sfc-template:/Users/mali/Desktop/projects/dev-vault/.obsidian/plugins/deepseek-ai-assistant/src/components/AICard.vue?type=template
+// sfc-template:/Users/mali/Desktop/Projects/dev-vault/.obsidian/plugins/deepseek-ai-assistant/src/components/AICard.vue?type=template
 var _hoisted_12 = { class: "flex flex-col h-full p-2 max-w-[900px] mx-auto w-full" };
 var _hoisted_2 = { class: "flex-1 overflow-hidden relative rounded-xl bg-transparent mb-6 group/answer" };
 var _hoisted_3 = {
@@ -20606,12 +20752,13 @@ var _hoisted_8 = { class: "relative w-full bg-[var(--background-primary)] rounde
 var _hoisted_9 = { class: "absolute bottom-3 right-3 left-3 flex justify-between items-center" };
 var _hoisted_10 = { class: "relative group" };
 var _hoisted_11 = { class: "flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg transition-colors cursor-pointer border border-transparent hover:border-[var(--apple-border)]" };
-var _hoisted_122 = ["disabled"];
-var _hoisted_13 = {
+var _hoisted_122 = ["value"];
+var _hoisted_13 = ["disabled"];
+var _hoisted_14 = {
   key: 0,
   class: "flex items-center gap-1"
 };
-var _hoisted_14 = {
+var _hoisted_15 = {
   key: 1,
   class: "flex items-center gap-2"
 };
@@ -20688,28 +20835,26 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
                     "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => $setup.chatModel = $event),
                     class: "appearance-none bg-transparent border-none text-[12px] font-medium text-[var(--text-normal)] cursor-pointer pr-4 focus:outline-none font-sans"
                   },
-                  [..._cache[3] || (_cache[3] = [
-                    createBaseVNode(
-                      "option",
-                      { value: "deepseek-reasoner" },
-                      "Deepseek R1",
-                      -1
-                      /* CACHED */
-                    ),
-                    createBaseVNode(
-                      "option",
-                      { value: "deepseek-chat" },
-                      "Deepseek V3",
-                      -1
-                      /* CACHED */
-                    )
-                  ])],
+                  [
+                    (openBlock(true), createElementBlock(
+                      Fragment,
+                      null,
+                      renderList($setup.availableModels, (model) => {
+                        return openBlock(), createElementBlock("option", {
+                          key: model.id,
+                          value: model.id
+                        }, toDisplayString(model.name), 9, _hoisted_122);
+                      }),
+                      128
+                      /* KEYED_FRAGMENT */
+                    ))
+                  ],
                   512
                   /* NEED_PATCH */
                 ), [
                   [vModelSelect, $setup.chatModel]
                 ]),
-                _cache[4] || (_cache[4] = createBaseVNode(
+                _cache[3] || (_cache[3] = createBaseVNode(
                   "div",
                   { class: "absolute right-2.5 pointer-events-none text-[var(--text-muted)]" },
                   [
@@ -20737,7 +20882,7 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
               onClick: $setup.submit,
               disabled: $setup.isLoading || !$setup.inputContent.trim()
             }, [
-              !$setup.isLoading ? (openBlock(), createElementBlock("span", _hoisted_13, [..._cache[5] || (_cache[5] = [
+              !$setup.isLoading ? (openBlock(), createElementBlock("span", _hoisted_14, [..._cache[4] || (_cache[4] = [
                 createTextVNode(
                   " Send ",
                   -1
@@ -20767,7 +20912,7 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
                   -1
                   /* CACHED */
                 )
-              ])])) : (openBlock(), createElementBlock("span", _hoisted_14, [..._cache[6] || (_cache[6] = [
+              ])])) : (openBlock(), createElementBlock("span", _hoisted_15, [..._cache[5] || (_cache[5] = [
                 createBaseVNode(
                   "svg",
                   {
@@ -20800,7 +20945,7 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
                   /* CACHED */
                 )
               ])]))
-            ], 8, _hoisted_122)
+            ], 8, _hoisted_13)
           ])
         ])
       ])
@@ -38896,7 +39041,7 @@ function zoom_default2() {
   return zoom;
 }
 
-// sfc-script:/Users/mali/Desktop/projects/dev-vault/.obsidian/plugins/deepseek-ai-assistant/src/components/HeatMap.vue?type=script
+// sfc-script:/Users/mali/Desktop/Projects/dev-vault/.obsidian/plugins/deepseek-ai-assistant/src/components/HeatMap.vue?type=script
 var HeatMap_default = {
   __name: "HeatMap",
   setup(__props, { expose: __expose }) {
@@ -39060,13 +39205,13 @@ var HeatMap_default = {
   }
 };
 
-// sfc-template:/Users/mali/Desktop/projects/dev-vault/.obsidian/plugins/deepseek-ai-assistant/src/components/HeatMap.vue?type=template
-var _hoisted_15 = {
+// sfc-template:/Users/mali/Desktop/Projects/dev-vault/.obsidian/plugins/deepseek-ai-assistant/src/components/HeatMap.vue?type=template
+var _hoisted_16 = {
   id: "container",
   class: "w-full overflow-hidden"
 };
 function render3(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("div", _hoisted_15, [
+  return openBlock(), createElementBlock("div", _hoisted_16, [
     createBaseVNode(
       "div",
       {
@@ -39101,7 +39246,7 @@ HeatMap_default.__file = "src/components/HeatMap.vue";
 HeatMap_default.__scopeId = "data-v-4e0aa827";
 var HeatMap_default2 = HeatMap_default;
 
-// sfc-script:/Users/mali/Desktop/projects/dev-vault/.obsidian/plugins/deepseek-ai-assistant/src/components/DataPanel.vue?type=script
+// sfc-script:/Users/mali/Desktop/Projects/dev-vault/.obsidian/plugins/deepseek-ai-assistant/src/components/DataPanel.vue?type=script
 var import_obsidian3 = require("obsidian");
 var DataPanel_default = /* @__PURE__ */ defineComponent({
   __name: "DataPanel",
@@ -39143,14 +39288,14 @@ var DataPanel_default = /* @__PURE__ */ defineComponent({
   }
 });
 
-// sfc-template:/Users/mali/Desktop/projects/dev-vault/.obsidian/plugins/deepseek-ai-assistant/src/components/DataPanel.vue?type=template
-var _hoisted_16 = { class: "w-full px-4 py-4" };
+// sfc-template:/Users/mali/Desktop/Projects/dev-vault/.obsidian/plugins/deepseek-ai-assistant/src/components/DataPanel.vue?type=template
+var _hoisted_17 = { class: "w-full px-4 py-4" };
 var _hoisted_22 = { class: "flex justify-between items-center bg-[var(--background-secondary)] rounded-lg p-3 border border-[var(--apple-border)] shadow-sm" };
 var _hoisted_32 = { class: "text-xl font-semibold text-[var(--text-normal)]" };
 var _hoisted_42 = { class: "flex flex-col items-center flex-1 cursor-default" };
 var _hoisted_52 = { class: "text-xl font-semibold text-[var(--text-normal)]" };
 function render4(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("div", _hoisted_16, [
+  return openBlock(), createElementBlock("div", _hoisted_17, [
     createBaseVNode("div", _hoisted_22, [
       createBaseVNode("div", {
         class: "flex flex-col items-center flex-1 border-r border-[var(--apple-border)] cursor-pointer hover:bg-[var(--apple-bg-secondary)] transition-colors rounded-l-md",
@@ -39196,7 +39341,7 @@ DataPanel_default.render = render4;
 DataPanel_default.__file = "src/components/DataPanel.vue";
 var DataPanel_default2 = DataPanel_default;
 
-// sfc-script:/Users/mali/Desktop/projects/dev-vault/.obsidian/plugins/deepseek-ai-assistant/src/components/PromptLine.vue?type=script
+// sfc-script:/Users/mali/Desktop/Projects/dev-vault/.obsidian/plugins/deepseek-ai-assistant/src/components/PromptLine.vue?type=script
 var import_obsidian4 = require("obsidian");
 var PromptLine_default = /* @__PURE__ */ defineComponent({
   __name: "PromptLine",
@@ -39328,8 +39473,8 @@ var PromptLine_default = /* @__PURE__ */ defineComponent({
   }
 });
 
-// sfc-template:/Users/mali/Desktop/projects/dev-vault/.obsidian/plugins/deepseek-ai-assistant/src/components/PromptLine.vue?type=template
-var _hoisted_17 = { class: "flex-none px-4 pt-2 pb-2" };
+// sfc-template:/Users/mali/Desktop/Projects/dev-vault/.obsidian/plugins/deepseek-ai-assistant/src/components/PromptLine.vue?type=template
+var _hoisted_18 = { class: "flex-none px-4 pt-2 pb-2" };
 var _hoisted_23 = { class: "flex items-center justify-between h-8" };
 var _hoisted_33 = {
   key: 0,
@@ -39379,7 +39524,7 @@ function render5(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: $setup.clearSelection
   }, [
     createCommentVNode(" Header with Date and Search (Fixed) "),
-    createBaseVNode("div", _hoisted_17, [
+    createBaseVNode("div", _hoisted_18, [
       createBaseVNode("div", _hoisted_23, [
         createCommentVNode(" Date Title "),
         !$setup.isSearchActive ? (openBlock(), createElementBlock(
@@ -39583,7 +39728,7 @@ PromptLine_default.render = render5;
 PromptLine_default.__file = "src/components/PromptLine.vue";
 var PromptLine_default2 = PromptLine_default;
 
-// sfc-script:/Users/mali/Desktop/projects/dev-vault/.obsidian/plugins/deepseek-ai-assistant/src/components/MainTemplate.vue?type=script
+// sfc-script:/Users/mali/Desktop/Projects/dev-vault/.obsidian/plugins/deepseek-ai-assistant/src/components/MainTemplate.vue?type=script
 var MainTemplate_default = /* @__PURE__ */ defineComponent({
   __name: "MainTemplate",
   props: {
@@ -39641,14 +39786,14 @@ var MainTemplate_default = /* @__PURE__ */ defineComponent({
   }
 });
 
-// sfc-template:/Users/mali/Desktop/projects/dev-vault/.obsidian/plugins/deepseek-ai-assistant/src/components/MainTemplate.vue?type=template
-var _hoisted_18 = { class: "absolute inset-0 flex w-full h-full overflow-hidden bg-[var(--background-primary)] text-[var(--text-normal)]" };
+// sfc-template:/Users/mali/Desktop/Projects/dev-vault/.obsidian/plugins/deepseek-ai-assistant/src/components/MainTemplate.vue?type=template
+var _hoisted_19 = { class: "absolute inset-0 flex w-full h-full overflow-hidden bg-[var(--background-primary)] text-[var(--text-normal)]" };
 var _hoisted_24 = { class: "flex-none w-full border-b border-[var(--apple-border)] pb-0" };
 var _hoisted_34 = { class: "flex-1 w-full min-h-0 overflow-hidden" };
 var _hoisted_44 = { class: "flex-1 h-full overflow-hidden relative bg-[var(--background-secondary)]" };
 var _hoisted_54 = ["title"];
 function render6(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("div", _hoisted_18, [
+  return openBlock(), createElementBlock("div", _hoisted_19, [
     createCommentVNode(" \u4FA7\u8FB9\u680F "),
     withDirectives(createBaseVNode(
       "div",
@@ -39790,6 +39935,13 @@ var DeepSeekAIAssistant_ItemView = class extends import_obsidian5.ItemView {
 var Plugin_Deepseek_AI_Assistant = class extends import_obsidian6.Plugin {
   // private vueApp: ReturnType<typeof createApp> | null = null; // 创建vue应用实例
   settings = DEFAULT_SETTINGS;
+  settingsListeners = [];
+  registerSettingsListener(listener) {
+    this.settingsListeners.push(listener);
+  }
+  unregisterSettingsListener(listener) {
+    this.settingsListeners = this.settingsListeners.filter((l) => l !== listener);
+  }
   async onload() {
     await this.loadSettings();
     this.addSettingTab(new DeepSeekAIAssistant_SettingTab(this.app, this));
@@ -39824,6 +39976,7 @@ var Plugin_Deepseek_AI_Assistant = class extends import_obsidian6.Plugin {
   }
   async saveSettings() {
     await this.saveData(this.settings);
+    this.settingsListeners.forEach((l) => l());
   }
   async activateView() {
     const { workspace } = this.app;

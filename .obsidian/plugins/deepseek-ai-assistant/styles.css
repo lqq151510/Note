@@ -257,6 +257,9 @@ If you want to view the source, please visit the GitHub repo of this plugin.
 .deepseek-ai-assistant-view .flex {
   display: flex;
 }
+.deepseek-ai-assistant-view .contents {
+  display: contents;
+}
 .deepseek-ai-assistant-view .hidden {
   display: none;
 }
@@ -388,6 +391,9 @@ If you want to view the source, please visit the GitHub repo of this plugin.
 }
 .deepseek-ai-assistant-view .resize-none {
   resize: none;
+}
+.deepseek-ai-assistant-view .resize {
+  resize: both;
 }
 .deepseek-ai-assistant-view .appearance-none {
   -webkit-appearance: none;
@@ -887,7 +893,7 @@ If you want to view the source, please visit the GitHub repo of this plugin.
     var(--tw-shadow);
 }
 
-/* sfc-style:/Users/mali/Desktop/projects/dev-vault/.obsidian/plugins/deepseek-ai-assistant/src/components/AICard.vue?type=style&index=0 */
+/* sfc-style:/Users/mali/Desktop/Projects/dev-vault/.obsidian/plugins/deepseek-ai-assistant/src/components/AICard.vue?type=style&index=0 */
 .answer-field[data-v-f616ee68] * {
   user-select: text;
   -webkit-user-select: text;
@@ -903,7 +909,7 @@ If you want to view the source, please visit the GitHub repo of this plugin.
   border-radius: 3px;
 }
 
-/* sfc-style:/Users/mali/Desktop/projects/dev-vault/.obsidian/plugins/deepseek-ai-assistant/src/components/HeatMap.vue?type=style&index=0 */
+/* sfc-style:/Users/mali/Desktop/Projects/dev-vault/.obsidian/plugins/deepseek-ai-assistant/src/components/HeatMap.vue?type=style&index=0 */
 .no-scrollbar[data-v-4e0aa827]::-webkit-scrollbar {
   display: none;
 }
