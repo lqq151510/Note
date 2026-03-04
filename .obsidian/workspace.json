@@ -25,12 +25,14 @@
             "id": "debbb003e177db3c",
             "type": "leaf",
             "state": {
-              "type": "release-notes",
+              "type": "markdown",
               "state": {
-                "currentVersion": "1.12.4"
+                "file": "Java后端/spring cloud/1.微服务架构和单体架构.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-book-up",
-              "title": "版本说明 1.12.4"
+              "icon": "lucide-file",
+              "title": "1.微服务架构和单体架构"
             }
           }
         ],
@@ -203,7 +205,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 613.5
+    "width": 533.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -219,8 +221,9 @@
       "publish:发布更改": false
     }
   },
-  "active": "debbb003e177db3c",
+  "active": "066d8ed5010e66ea",
   "lastOpenFiles": [
+    "Java后端/spring cloud/1.微服务架构和单体架构.md",
     "未命名.canvas",
     "2026-03-04.md",
     "未命名 1.base",
