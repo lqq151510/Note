@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java后端/spring cloud/3.Nacos.md",
+                "file": "Java后端/spring cloud/未命名.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "3.Nacos"
+              "title": "未命名"
             }
           }
         ],
@@ -223,8 +223,9 @@
   },
   "active": "debbb003e177db3c",
   "lastOpenFiles": [
-    "Java后端/spring cloud/2.注册中心.md",
     "Java后端/spring cloud/3.Nacos.md",
+    "Java后端/spring cloud/未命名.md",
+    "Java后端/spring cloud/2.注册中心.md",
     "Java后端/Mybatis-plus/4.IService.md",
     "Java后端/Mybatis-plus/1.MyBatis-Plus.md",
     "Java后端/spring cloud/1.微服务架构和单体架构.md",
@@ -251,7 +252,6 @@
     "Java后端/Spring boot/1.什么是Spring Boot.md",
     "Docker/1.什么是Docker.md",
     "数据库/Redis/5.List.md",
-    "数据库/Redis/7.Sorted Set.md",
     "Java后端/Mybatis-plus",
     "Java后端/spring cloud",
     "大模型",
