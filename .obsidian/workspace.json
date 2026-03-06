@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java后端/spring cloud/openfeign/2.连接池.md",
+                "file": "Java后端/spring cloud/4.openfeign/4.日志输出.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2.连接池"
+              "title": "4.日志输出"
             }
           }
         ],
@@ -223,12 +223,14 @@
   },
   "active": "debbb003e177db3c",
   "lastOpenFiles": [
+    "Java后端/spring cloud/4.openfeign/3.最佳实践.md",
+    "Java后端/spring cloud/4.openfeign/4.日志输出.md",
+    "Java后端/spring cloud/4.openfeign/2.连接池.md",
     "Java后端/spring cloud/3.Nacos.md",
     "Java后端/spring cloud/2.注册中心.md",
     "Java后端/spring cloud/1.微服务架构和单体架构.md",
-    "Java后端/spring cloud/openfeign/1.OpenFeign.md",
-    "Java后端/spring cloud/openfeign/2.连接池.md",
-    "Java后端/spring cloud/openfeign",
+    "Java后端/spring cloud/4.openfeign/1.OpenFeign.md",
+    "Java后端/spring cloud/4.openfeign",
     "Java后端/Mybatis-plus/4.IService.md",
     "Java后端/Mybatis-plus/1.MyBatis-Plus.md",
     "未命名.canvas",
@@ -251,8 +253,6 @@
     "Java后端/Spring boot/5,绑定参数.md",
     "Java后端/Spring boot/4.HTTP响应.md",
     "Java后端/Spring boot/3.HTTP请求.md",
-    "Java后端/Spring boot/1.什么是Spring Boot.md",
-    "Docker/1.什么是Docker.md",
     "Java后端/Mybatis-plus",
     "Java后端/spring cloud",
     "大模型",
