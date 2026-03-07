@@ -1,6 +1,14 @@
 {
-  "API_KEY": "sk-0a6a3c90ac784671b1bcb2813ebefcf8",
-  "API_URL": "https://api.deepseek.com",
+  "models": [
+    {
+      "id": "default-deepseek-v3",
+      "name": "DeepSeek V3",
+      "modelId": "deepseek-chat",
+      "apiKey": "sk-0a6a3c90ac784671b1bcb2813ebefcf8",
+      "apiUrl": "https://api.deepseek.com",
+      "providerUrl": "https://platform.deepseek.com/"
+    }
+  ],
   "promptStats": {
     "2026-01-22": {
       "num": 4,
@@ -126,6 +134,31 @@
           "answer": "RAG 的全称是 **Retrieval-Augmented Generation**（检索增强生成），是一种结合了**信息检索**和**文本生成**的人工智能技术。它的核心思想是：在生成回答之前，先从大规模知识库（如文档、数据库或网络）中检索相关信息，然后基于这些信息生成更准确、可靠的回答。\n\n---\n\n### **RAG 的主要特点：**\n1. **检索 + 生成结合**  \n   - **检索**：从外部知识源中查找与问题相关的资料。\n   - **生成**：利用检索到的信息，通过大语言模型（如 GPT）生成自然语言的回答。\n\n2. **解决大模型的局限性**  \n   - 传统大语言模型依赖训练时的知识，可能无法回答最新信息或特定领域的问题。\n   - RAG 通过实时检索外部知识，补充模型的“知识盲区”，提高回答的准确性和时效性。\n\n3. **减少“幻觉”**  \n   - 由于回答基于实际检索到的信息，而非完全依赖模型内部记忆，可以降低模型编造错误答案的概率。\n\n---\n\n### **RAG 的工作流程：**\n1. **用户提问**：输入一个问题或请求。\n2. **检索**：将问题转换为检索查询，从知识库中查找相关文档或数据。\n3. **增强**：将检索到的信息与原始问题结合，形成增强的输入。\n4. **生成**：大语言模型基于增强后的输入生成最终回答。\n\n---\n\n### **应用场景：**\n- **智能客服**：结合企业内部文档，提供精准的售后支持。\n- **知识库问答**：基于公司文档、手册等回答专业问题。\n- **学术研究**：检索论文或数据，生成综述或分析。\n- **新闻摘要**：结合最新报道生成内容总结。\n\n---\n\n### **优势：**\n- **信息实时性**：可集成动态更新的知识源。\n- **可解释性**：回答通常附有参考来源，增强可信度。\n- **定制化**：可针对不同领域灵活适配知识库。\n\n---\n\n### **举例说明：**\n- **传统模型**：直接问 ChatGPT“某公司2024年财报如何？”，若训练数据未包含该信息，可能无法回答或编造内容。\n- **RAG 系统**：先检索该公司最新的公开财报文档，再结合文档内容生成总结性回答。\n\nRAG 是目前解决大模型知识局限性、提升专业领域应用效果的重要技术方向之一。"
         }
       ]
+    },
+    "2026-03-07": {
+      "num": 3,
+      "prompt_content": [
+        {
+          "id_timestamp": "1772862687947",
+          "prompt": "OpenFeign是什么\n",
+          "answer": "**OpenFeign** 是一个基于 Java 的声明式 HTTP 客户端框架，主要用于简化微服务架构中服务之间的调用。它通过注解和接口定义的方式，让开发者能够像调用本地方法一样调用远程服务，而无需手动编写 HTTP 请求代码。\n\n---\n\n### **主要特点**\n1. **声明式调用**  \n   通过定义接口并添加注解（如 `@FeignClient`）来声明远程服务的调用方式，无需编写具体实现。\n\n2. **集成 Ribbon（负载均衡）**  \n   默认集成了 Netflix Ribbon，支持客户端负载均衡，自动将请求分发到多个服务实例。\n\n3. **集成 Hystrix（熔断器）**  \n   可与 Hystrix 结合，实现服务调用的熔断、降级和容错处理（Spring Cloud 早期版本中默认支持）。\n\n4. **支持 Spring MVC 注解**  \n   使用 `@RequestMapping`、`@GetMapping`、`@PostMapping` 等注解定义 HTTP 请求，与 Spring Web 开发风格一致。\n\n5. **可扩展性**  \n   支持自定义编码器、解码器、拦截器等，方便扩展功能（如日志、认证等）。\n\n---\n\n### **核心注解**\n- **`@FeignClient`**  \n  标记一个接口为 Feign 客户端，指定要调用的服务名称（如 `name = \"user-service\"`）。\n\n---\n\n### **简单示例**\n1. **添加依赖**（Spring Cloud 项目）：\n   ```xml\n   <dependency>\n       <groupId>org.springframework.cloud</groupId>\n       <artifactId>spring-cloud-starter-openfeign</artifactId>\n   </dependency>\n   ```\n\n2. **启用 Feign 客户端**：\n   在启动类添加 `@EnableFeignClients` 注解：\n   ```java\n   @SpringBootApplication\n   @EnableFeignClients\n   public class Application {\n       public static void main(String[] args) {\n           SpringApplication.run(Application.class, args);\n       }\n   }\n   ```\n\n3. **定义 Feign 客户端接口**：\n   ```java\n   @FeignClient(name = \"user-service\") // 指定服务名称\n   public interface UserServiceClient {\n       @GetMapping(\"/users/{id}\") // 定义 HTTP 请求\n       User getUserById(@PathVariable(\"id\") Long id);\n   }\n   ```\n\n4. **调用远程服务**：\n   在业务类中直接注入 `UserServiceClient` 并调用方法：\n   ```java\n   @RestController\n   public class UserController {\n       @Autowired\n       private UserServiceClient userServiceClient;\n\n       @GetMapping(\"/user-info/{id}\")\n       public User getUserInfo(@PathVariable Long id) {\n           return userServiceClient.getUserById(id); // 像本地方法一样调用\n       }\n   }\n   ```\n\n---\n\n### **与 RestTemplate 对比**\n| **特性**       | **OpenFeign**                     | **RestTemplate**               |\n|----------------|-----------------------------------|--------------------------------|\n| **编程风格**   | 声明式（接口+注解）              | 模板化（手动构建请求）         |\n| **可读性**     | 高（类似 Spring MVC）            | 较低（代码冗余）               |\n| **负载均衡**   | 默认集成 Ribbon                  | 需手动配置或结合 LoadBalancer |\n| **维护性**     | 易于维护和扩展                   | 代码分散，维护成本较高         |\n\n---\n\n### **适用场景**\n- 微服务之间的 HTTP 调用。\n- 需要简化远程调用代码的项目。\n- 希望与 Spring Cloud 生态（如 Eureka、Hystrix）无缝集成。\n\n---\n\n### **注意事项**\n- **性能开销**：由于基于动态代理和反射，性能略低于直接使用 HTTP 客户端（如 OkHttp），但通常可忽略。\n- **版本兼容性**：需注意 Spring Cloud 与 OpenFeign 版本的匹配（如 Spring Cloud 2020 后需手动配置 Hystrix）。\n- **复杂请求**：对非 RESTful 或特殊协议支持有限，需自定义编码器。\n\n---\n\n### **总结**\nOpenFeign 通过声明式接口极大简化了微服务调用的复杂度，是 Spring Cloud 生态中常用的服务通信工具。结合负载均衡、熔断等功能，能快速构建健壮的分布式系统。",
+          "model": "default-deepseek-v3"
+        },
+        {
+          "id_timestamp": "1772862816163",
+          "prompt": "那网关是负责调用哪个微服务，而OpenFeign实现微服务之间交流是这样么\n",
+          "answer": "是的，你的理解基本正确，我来详细解释一下这两个概念的关系和区别：\n\n## 1. **网关（Gateway）的作用**\n网关（如Spring Cloud Gateway、Zuul等）主要负责：\n- **路由转发**：将外部请求路由到对应的微服务\n- **统一入口**：作为所有外部请求的统一入口点\n- **跨域处理、限流、鉴权**等通用功能\n- **负载均衡**：通过服务发现将请求分发到多个实例\n\n**网关并不直接决定\"调用哪个微服务\"的逻辑**，而是根据配置的路由规则进行转发。\n\n## 2. **OpenFeign的作用**\nOpenFeign是一个声明式的HTTP客户端，主要用于：\n- **微服务间的内部调用**：一个微服务调用另一个微服务的接口\n- **简化HTTP调用**：通过接口注解的方式，避免手动编写HTTP请求代码\n- **集成负载均衡**：通常与Ribbon或Spring Cloud LoadBalancer结合使用\n\n## 3. **两者的关系和工作流程**\n\n```\n外部请求 → 网关 → 路由到目标微服务A → 微服务A通过OpenFeign → 调用微服务B\n```\n\n### 示例场景：\n```java\n// 1. 网关配置（application.yml）\nspring:\n  cloud:\n    gateway:\n      routes:\n        - id: user-service\n          uri: lb://user-service  # 负载均衡到user-service\n          predicates:\n            - Path=/api/users/**\n            \n        - id: order-service  \n          uri: lb://order-service  # 负载均衡到order-service\n          predicates:\n            - Path=/api/orders/**\n\n// 2. 微服务间调用（使用OpenFeign）\n@FeignClient(name = \"order-service\")\npublic interface OrderServiceClient {\n    @GetMapping(\"/orders/user/{userId}\")\n    List<Order> getUserOrders(@PathVariable Long userId);\n}\n\n// 在user-service中调用order-service\n@Service\npublic class UserService {\n    @Autowired\n    private OrderServiceClient orderServiceClient;\n    \n    public UserDetails getUserWithOrders(Long userId) {\n        User user = getUser(userId);\n        List<Order> orders = orderServiceClient.getUserOrders(userId); // 通过OpenFeign调用\n        return new UserDetails(user, orders);\n    }\n}\n```\n\n## 4. **关键区别**\n\n| 方面 | 网关（Gateway） | OpenFeign |\n|------|----------------|-----------|\n| **定位** | 系统边界，对外入口 | 微服务内部通信 |\n| **调用方向** | 外部→微服务 | 微服务→微服务 |\n| **使用场景** | API聚合、安全控制、监控 | 服务间业务逻辑调用 |\n| **负载均衡** | 通常集成 | 内置支持 |\n\n## 5. **实际应用建议**\n- **网关层**：处理跨域、认证、限流、日志记录等横切关注点\n- **OpenFeign**：处理业务逻辑需要的服务间调用\n- **两者结合**：外部请求通过网关进入，内部微服务通过OpenFeign相互协作\n\n这样的架构既保证了系统的安全性（统一入口），又保持了微服务间的松耦合和灵活性。",
+          "model": "default-deepseek-v3"
+        },
+        {
+          "id_timestamp": "1772862898810",
+          "prompt": "那他们负载均衡策略都是轮询么",
+          "answer": "不是的，负载均衡策略并不都是轮询（Round Robin）。常见的负载均衡策略有多种，具体选择取决于应用场景和需求。以下是几种常见的策略：\n\n1. **轮询（Round Robin）**  \n   请求按顺序依次分配给后端服务器，适用于服务器性能相近的场景。\n\n2. **加权轮询（Weighted Round Robin）**  \n   根据服务器的处理能力分配权重，性能高的服务器获得更多请求。\n\n3. **最少连接（Least Connections）**  \n   将请求分配给当前连接数最少的服务器，适合处理时间差异较大的场景。\n\n4. **加权最少连接（Weighted Least Connections）**  \n   结合服务器权重和当前连接数进行分配。\n\n5. **IP哈希（IP Hash）**  \n   根据客户端IP地址计算哈希值，将同一IP的请求固定分配到同一服务器，适合需要会话保持的场景。\n\n6. **随机（Random）**  \n   随机选择服务器，适用于简单场景。\n\n7. **响应时间（Response Time）**  \n   根据服务器的响应时间动态分配请求，优先选择响应快的服务器。\n\n8. **源地址哈希（Source IP Hash）**  \n   类似IP哈希，但可以基于更多因素（如端口）计算哈希。\n\n9. **一致性哈希（Consistent Hashing）**  \n   在分布式系统中常用，减少服务器变动对请求分配的影响。\n\n10. **基于路径或内容的负载均衡**  \n    根据请求的URL路径或内容类型分配请求，常用于微服务或API网关。\n\n不同的负载均衡器（如Nginx、HAProxy、AWS ELB等）支持不同的策略，实际选择需结合业务需求、服务器状态和性能指标。",
+          "model": "default-deepseek-v3"
+        }
+      ]
     }
-  }
+  },
+  "API_KEY": "sk-0a6a3c90ac784671b1bcb2813ebefcf8",
+  "API_URL": "https://api.deepseek.com"
 }

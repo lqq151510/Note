@@ -205,7 +205,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 533.5
+    "width": 529.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -223,15 +223,15 @@
   },
   "active": "debbb003e177db3c",
   "lastOpenFiles": [
+    "Java后端/spring cloud/4.openfeign/1.OpenFeign.md",
+    "Java后端/spring cloud/5.网关/1.网关.md",
     "Java后端/spring cloud/5.网关",
     "Java后端/spring cloud/4.openfeign/4.日志输出.md",
-    "Java后端/spring cloud/5.网关/1.网关.md",
     "Java后端/spring cloud/4.openfeign/3.最佳实践.md",
     "Java后端/spring cloud/4.openfeign/2.连接池.md",
     "Java后端/spring cloud/3.Nacos.md",
     "Java后端/spring cloud/2.注册中心.md",
     "Java后端/spring cloud/1.微服务架构和单体架构.md",
-    "Java后端/spring cloud/4.openfeign/1.OpenFeign.md",
     "Java后端/spring cloud/4.openfeign",
     "Java后端/Mybatis-plus/4.IService.md",
     "Java后端/Mybatis-plus/1.MyBatis-Plus.md",
@@ -258,7 +258,6 @@
     "大模型",
     "Nginx",
     "Docker",
-    "Linux/未命名",
-    "Linux"
+    "Linux/未命名"
   ]
 }
