@@ -223,8 +223,9 @@
   },
   "active": "debbb003e177db3c",
   "lastOpenFiles": [
-    "Java后端/spring cloud/5.网关/1.网关.md",
+    "Java后端/spring cloud/5.网关/3. 自定义过滤器.md",
     "Java后端/spring cloud/5.网关/2.路由属性.md",
+    "Java后端/spring cloud/5.网关/1.网关.md",
     "Java后端/spring cloud/4.openfeign/1.OpenFeign.md",
     "Java后端/spring cloud/5.网关",
     "Java后端/spring cloud/4.openfeign/4.日志输出.md",
@@ -253,7 +254,6 @@
     "Java后端/Spring boot/8.控制反转.md",
     "Java后端/Spring boot/7.加载资源文件.md",
     "Java后端/Spring boot/6.Lombok.md",
-    "Java后端/Spring boot/5,绑定参数.md",
     "Java后端/Mybatis-plus",
     "Java后端/spring cloud",
     "大模型",
