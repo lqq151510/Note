@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java后端/spring cloud/8.雪崩问题.md",
+                "file": "Java后端/spring cloud/9.Sentinel.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "8.雪崩问题"
+              "title": "9.Sentinel"
             }
           }
         ],
@@ -223,8 +223,9 @@
   },
   "active": "debbb003e177db3c",
   "lastOpenFiles": [
-    "Java后端/spring cloud/7.动态路由.md",
     "Java后端/spring cloud/8.雪崩问题.md",
+    "Java后端/spring cloud/9.Sentinel.md",
+    "Java后端/spring cloud/7.动态路由.md",
     "Java后端/spring cloud/6.共享配置.md",
     "Java后端/spring cloud/5.网关/4.登录校验.md",
     "Java后端/spring cloud/5.网关/3. 自定义过滤器.md",
@@ -253,7 +254,6 @@
     "Java后端/Spring boot/15.全局异常处理器.md",
     "Java后端/Spring boot/13.配置文件.md",
     "Java后端/Spring boot/12.相同类型bean.md",
-    "Java后端/Spring boot/11.控制器注解.md",
     "Java后端/Mybatis-plus",
     "Java后端/spring cloud",
     "大模型",
