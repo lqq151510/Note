@@ -206,8 +206,10 @@
       "publish:发布更改": false
     }
   },
-  "active": "2ff0fb82503c07b6",
+  "active": "066d8ed5010e66ea",
   "lastOpenFiles": [
+    "Java后端/消息队列/RabbitMQ",
+    "Java后端/消息队列",
     "未命名.base",
     "Java后端/spring cloud/15.分布式事务.md",
     "未命名.canvas",
@@ -242,7 +244,6 @@
     "Java后端/spring cloud",
     "大模型",
     "Nginx",
-    "Docker",
-    "Linux/未命名"
+    "Docker"
   ]
 }
