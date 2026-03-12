@@ -11,10 +11,10 @@
             "id": "2aad513004ac8412",
             "type": "leaf",
             "state": {
-              "type": "empty",
+              "type": "graph",
               "state": {},
-              "icon": "lucide-file",
-              "title": "新标签页"
+              "icon": "lucide-git-fork",
+              "title": "关系图谱"
             }
           }
         ]
@@ -202,7 +202,7 @@
       "publish:发布更改": false
     }
   },
-  "active": "066d8ed5010e66ea",
+  "active": "2aad513004ac8412",
   "lastOpenFiles": [
     "assets/1571735715977.png.md",
     "assets",
