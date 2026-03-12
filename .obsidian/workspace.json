@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java后端/消息队列/RabbitMQ/9.消息转换器.md",
+                "file": "Java后端/消息队列/MQ高级/1.发送者重连.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "9.消息转换器"
+              "title": "1.发送者重连"
             }
           }
         ]
@@ -208,8 +208,10 @@
   },
   "active": "2aad513004ac8412",
   "lastOpenFiles": [
-    "Java后端/消息队列/RabbitMQ/8.注解声明.md",
     "Java后端/消息队列/RabbitMQ/9.消息转换器.md",
+    "Java后端/消息队列/MQ高级/1.发送者重连.md",
+    "Java后端/消息队列/MQ高级",
+    "Java后端/消息队列/RabbitMQ/8.注解声明.md",
     "Java后端/消息队列/RabbitMQ/7.Bean 声明.md",
     "Java后端/消息队列/RabbitMQ/6.Topic 交换机.md",
     "Java后端/消息队列/RabbitMQ/5.Direct 交换机.md",
@@ -234,7 +236,6 @@
     "Java后端/spring cloud/5.网关/1.网关.md",
     "Java后端/spring cloud/6.共享配置.md",
     "Java后端/spring cloud/3.Nacos.md",
-    "Java后端/spring cloud/2.注册中心.md",
     "未命名.base",
     "Java后端/消息队列/RabbitMQ",
     "Java后端/消息队列",
@@ -243,7 +244,6 @@
     "Java后端/spring cloud/5.网关",
     "Java后端/spring cloud/4.openfeign",
     "Java后端/Mybatis-plus",
-    "Java后端/spring cloud",
-    "大模型"
+    "Java后端/spring cloud"
   ]
 }
