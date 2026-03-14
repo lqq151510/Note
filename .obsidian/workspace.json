@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java后端/elasticsearch/2.IK分词器.md",
+                "file": "Java后端/elasticsearch/3.索引库.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2.IK分词器"
+              "title": "3.索引库"
             }
           }
         ]
@@ -208,8 +208,9 @@
   },
   "active": "2aad513004ac8412",
   "lastOpenFiles": [
-    "Java后端/elasticsearch/1.倒排索引.md",
     "Java后端/elasticsearch/2.IK分词器.md",
+    "Java后端/elasticsearch/3.索引库.md",
+    "Java后端/elasticsearch/1.倒排索引.md",
     "Java后端/消息队列/MQ高级/9.取消超时订单.md",
     "Java后端/elasticsearch",
     "Java后端/消息队列/MQ高级/8.延迟消息.md",
@@ -236,7 +237,6 @@
     "Java后端/Spring boot/30.Apache POI.md",
     "Java后端/Spring boot/21.Swagger.md",
     "Java后端/spring cloud/15.分布式事务.md",
-    "Java后端/spring cloud/14.分布式微服务.md",
     "未命名.base",
     "Java后端/消息队列/RabbitMQ",
     "Java后端/消息队列",
