@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java后端/elasticsearch/9.聚合.md",
+                "file": "大模型/springAI/1.配置.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "9.聚合"
+              "title": "1.配置"
             }
           }
         ]
@@ -206,11 +206,12 @@
       "publish:发布更改": false
     }
   },
-  "active": "066d8ed5010e66ea",
+  "active": "2aad513004ac8412",
   "lastOpenFiles": [
+    "Java后端/elasticsearch/9.聚合.md",
+    "大模型/springAI/1.配置.md",
     "大模型/springAI",
     "assets/1571735715977.png.md",
-    "Java后端/elasticsearch/9.聚合.md",
     "Java后端/elasticsearch/8.RestHighLevelClient 查询.md",
     "Java后端/elasticsearch/7.DSL 查询.md",
     "Java后端/elasticsearch/6.文档批处理.md",
@@ -243,7 +244,6 @@
     "未命名.canvas",
     "未命名 1.base",
     "Java后端/spring cloud/5.网关",
-    "Java后端/spring cloud/4.openfeign",
-    "Java后端/Mybatis-plus"
+    "Java后端/spring cloud/4.openfeign"
   ]
 }
