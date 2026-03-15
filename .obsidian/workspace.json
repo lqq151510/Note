@@ -206,10 +206,12 @@
       "publish:发布更改": false
     }
   },
-  "active": "2aad513004ac8412",
+  "active": "066d8ed5010e66ea",
   "lastOpenFiles": [
-    "Java后端/elasticsearch/8.RestHighLevelClient 查询.md",
+    "大模型/springAI",
+    "assets/1571735715977.png.md",
     "Java后端/elasticsearch/9.聚合.md",
+    "Java后端/elasticsearch/8.RestHighLevelClient 查询.md",
     "Java后端/elasticsearch/7.DSL 查询.md",
     "Java后端/elasticsearch/6.文档批处理.md",
     "Java后端/elasticsearch/5.CRUD操作.md",
@@ -233,10 +235,8 @@
     "Java后端/消息队列/RabbitMQ/7.Bean 声明.md",
     "Java后端/消息队列/RabbitMQ/6.Topic 交换机.md",
     "Java后端/消息队列/RabbitMQ/5.Direct 交换机.md",
-    "assets/1571735715977.png.md",
     "assets",
     "leecode/100题/哈希表/1.两数之和.md",
-    "Markdown 文档.md",
     "未命名.base",
     "Java后端/消息队列/RabbitMQ",
     "Java后端/消息队列",
