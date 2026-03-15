@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java后端/elasticsearch/7.DSL 查询.md",
+                "file": "Java后端/elasticsearch/8.RestHighLevelClient 查询.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "7.DSL 查询"
+              "title": "8.RestHighLevelClient 查询"
             }
           }
         ]
@@ -208,8 +208,9 @@
   },
   "active": "2aad513004ac8412",
   "lastOpenFiles": [
-    "Java后端/elasticsearch/6.文档批处理.md",
     "Java后端/elasticsearch/7.DSL 查询.md",
+    "Java后端/elasticsearch/8.RestHighLevelClient 查询.md",
+    "Java后端/elasticsearch/6.文档批处理.md",
     "Java后端/elasticsearch/5.CRUD操作.md",
     "Java后端/elasticsearch/4.RestHighLevelClient.md",
     "Java后端/elasticsearch/3.索引库.md",
@@ -236,7 +237,6 @@
     "leecode/100题/哈希表/1.两数之和.md",
     "Markdown 文档.md",
     "Java后端/Spring boot/24.公共字段填充.md",
-    "Java后端/Spring boot/28.WebSocket 和 HttpClient.md",
     "未命名.base",
     "Java后端/消息队列/RabbitMQ",
     "Java后端/消息队列",
