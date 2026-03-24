@@ -20,8 +20,21 @@
               "icon": "lucide-file",
               "title": "2.Claude Code 使用指南"
             }
+          },
+          {
+            "id": "9046291e9ac3a796",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.12.7"
+              },
+              "icon": "lucide-book-up",
+              "title": "版本说明 1.12.7"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -206,7 +219,7 @@
       "publish:发布更改": false
     }
   },
-  "active": "2aad513004ac8412",
+  "active": "9046291e9ac3a796",
   "lastOpenFiles": [
     "Claude Code/1.使用指南.md",
     "Claude Code/2.Claude Code 使用指南.md",
