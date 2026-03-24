@@ -206,8 +206,9 @@
       "publish:发布更改": false
     }
   },
-  "active": "2aad513004ac8412",
+  "active": "066d8ed5010e66ea",
   "lastOpenFiles": [
+    "未命名",
     "大模型/springAI/7.向量模型.md",
     "大模型/springAI/8.向量数据库.md",
     "大模型/springAI/6.RAG.md",
@@ -235,7 +236,6 @@
     "Java后端/消息队列/MQ高级/5.消费者确认.md",
     "Java后端/消息队列/MQ高级/4.Lazy Queue.md",
     "Java后端/消息队列/MQ高级/3.数据持久化.md",
-    "Java后端/消息队列/MQ高级/2.发送者确认.md",
     "Java后端/消息队列/MQ高级",
     "assets",
     "未命名.base",
