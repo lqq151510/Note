@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "leecode/100题/技巧/31.下一个排列.md",
+                "file": "leecode/100题/技巧/287.寻找重复数.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "31.下一个排列"
+              "title": "287.寻找重复数"
             }
           }
         ]
@@ -208,8 +208,9 @@
   },
   "active": "2aad513004ac8412",
   "lastOpenFiles": [
-    "leecode/100题/技巧/75.颜色分类.md",
     "leecode/100题/技巧/31.下一个排列.md",
+    "leecode/100题/技巧/287.寻找重复数.md",
+    "leecode/100题/技巧/75.颜色分类.md",
     "leecode/100题/技巧/169.多数元素.md",
     "leecode/100题/技巧/136.只出现一次的数字.md",
     "Java后端/Spring boot/2.控制器类.md",
@@ -234,7 +235,6 @@
     "Java后端/Spring boot/19.Bean管理.md",
     "Java后端/Spring boot/18.Spring AOP.md",
     "Java后端/elasticsearch/1.倒排索引.md",
-    "Java后端/elasticsearch/2.IK分词器.md",
     "未命名.base",
     "Claude Code",
     "大模型/springAI",
