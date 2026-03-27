@@ -184,6 +184,18 @@
               "icon": "git-pull-request",
               "title": "Source Control"
             }
+          },
+          {
+            "id": "123d35dceddce248",
+            "type": "leaf",
+            "state": {
+              "type": "footnotes",
+              "state": {
+                "file": "leecode/100题/技巧/287.寻找重复数.md"
+              },
+              "icon": "lucide-file-signature",
+              "title": "脚注"
+            }
           }
         ],
         "currentTab": 6
@@ -194,6 +206,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "markdown-importer:打开 Markdown 格式转换器": false,
       "bases:新建数据库": false,
       "obsidian-git:Open Git source control": false,
       "switcher:打开快速切换": false,
@@ -203,7 +216,8 @@
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
       "deepseek-ai-assistant:Open deepseek AI assistant": false,
-      "publish:发布更改": false
+      "publish:发布更改": false,
+      "workspaces:管理工作区布局": false
     }
   },
   "active": "2aad513004ac8412",
