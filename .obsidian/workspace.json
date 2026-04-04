@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Markdown 文档.md",
+                "file": "leecode/100题/动态规划/70.爬楼梯.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Markdown 文档"
+              "title": "70.爬楼梯"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Markdown 文档.md",
+                "file": "leecode/100题/动态规划/70.爬楼梯.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": false
               },
               "icon": "links-coming-in",
-              "title": "Markdown 文档 的反向链接列表"
+              "title": "70.爬楼梯 的反向链接列表"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Markdown 文档.md",
+                "file": "leecode/100题/动态规划/70.爬楼梯.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Markdown 文档 的出链列表"
+              "title": "70.爬楼梯 的出链列表"
             }
           },
           {
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Markdown 文档.md",
+                "file": "leecode/100题/动态规划/70.爬楼梯.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Markdown 文档 的大纲"
+              "title": "70.爬楼梯 的大纲"
             }
           },
           {
@@ -191,7 +191,7 @@
             "state": {
               "type": "footnotes",
               "state": {
-                "file": "Markdown 文档.md"
+                "file": "leecode/100题/动态规划/70.爬楼梯.md"
               },
               "icon": "lucide-file-signature",
               "title": "脚注"
@@ -233,10 +233,11 @@
       "zk-prefixer:创建时间戳笔记": false
     }
   },
-  "active": "066d8ed5010e66ea",
+  "active": "2aad513004ac8412",
   "lastOpenFiles": [
-    "Nginx/Nginx 的作用和好处.md",
+    "Claude.md",
     "Markdown 文档.md",
+    "Nginx/Nginx 的作用和好处.md",
     "前端/java web/JavaScript.md",
     "202604041351.md",
     "Excalidraw/Drawing 2026-04-04 13.39.27.excalidraw.md",
@@ -262,7 +263,6 @@
     "Java后端/Spring boot/26.Spring Cache.md",
     "Java后端/Spring boot/24.公共字段填充.md",
     "Java后端/Spring boot/23.Builder.md",
-    "Java后端/Spring boot/20.自动配置.md",
     "未命名.base",
     "Claude Code",
     "大模型/springAI",
