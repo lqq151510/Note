@@ -20,8 +20,21 @@
               "icon": "lucide-file",
               "title": "JavaScript"
             }
+          },
+          {
+            "id": "824e545d98beb6ff",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Excalidraw/Drawing 2026-04-04 13.39.27.excalidraw.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "Drawing 2026-04-04 13.39.27.excalidraw"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -221,8 +234,11 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "2aad513004ac8412",
+  "active": "824e545d98beb6ff",
   "lastOpenFiles": [
+    "前端/java web/JavaScript.md",
+    "Excalidraw/Drawing 2026-04-04 13.39.27.excalidraw.md",
+    "Excalidraw",
     "leecode/100题/技巧/287.寻找重复数.md",
     "leecode/100题/技巧/31.下一个排列.md",
     "leecode/100题/技巧/75.颜色分类.md",
@@ -248,8 +264,6 @@
     "Java后端/Spring boot/21.Swagger.md",
     "Java后端/Spring boot/22.获取数据.md",
     "Java后端/Spring boot/19.Bean管理.md",
-    "Java后端/Spring boot/18.Spring AOP.md",
-    "Java后端/elasticsearch/1.倒排索引.md",
     "未命名.base",
     "Claude Code",
     "大模型/springAI",
@@ -258,7 +272,6 @@
     "assets",
     "Java后端/消息队列/RabbitMQ",
     "Java后端/消息队列",
-    "未命名.canvas",
-    "未命名 1.base"
+    "未命名.canvas"
   ]
 }
