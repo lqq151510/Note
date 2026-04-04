@@ -13,28 +13,15 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "前端/java web/JavaScript.md",
+                "file": "Markdown 文档.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "JavaScript"
-            }
-          },
-          {
-            "id": "824e545d98beb6ff",
-            "type": "leaf",
-            "state": {
-              "type": "excalidraw",
-              "state": {
-                "file": "Excalidraw/Drawing 2026-04-04 13.39.27.excalidraw.md"
-              },
-              "icon": "excalidraw-icon",
-              "title": "Drawing 2026-04-04 13.39.27.excalidraw"
+              "title": "Markdown 文档"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -107,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "数据库/Redis/Redis基础操作.md",
+                "file": "Markdown 文档.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,7 +104,7 @@
                 "unlinkedCollapsed": false
               },
               "icon": "links-coming-in",
-              "title": "Redis基础操作 的反向链接列表"
+              "title": "Markdown 文档 的反向链接列表"
             }
           },
           {
@@ -126,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "数据库/Redis/Redis基础操作.md",
+                "file": "Markdown 文档.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Redis基础操作 的出链列表"
+              "title": "Markdown 文档 的出链列表"
             }
           },
           {
@@ -169,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Java后端/消息队列/MQ高级/9.取消超时订单.md",
+                "file": "Markdown 文档.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "9.取消超时订单 的大纲"
+              "title": "Markdown 文档 的大纲"
             }
           },
           {
@@ -204,18 +191,28 @@
             "state": {
               "type": "footnotes",
               "state": {
-                "file": "leecode/100题/技巧/287.寻找重复数.md"
+                "file": "Markdown 文档.md"
               },
               "icon": "lucide-file-signature",
               "title": "脚注"
             }
+          },
+          {
+            "id": "8b54df6d2960cde0",
+            "type": "leaf",
+            "state": {
+              "type": "claudian-view",
+              "state": {},
+              "icon": "bot",
+              "title": "Claudian"
+            }
           }
         ],
-        "currentTab": 6
+        "currentTab": 8
       }
     ],
     "direction": "horizontal",
-    "width": 529.5
+    "width": 502.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -231,12 +228,17 @@
       "deepseek-ai-assistant:Open deepseek AI assistant": false,
       "publish:发布更改": false,
       "workspaces:管理工作区布局": false,
-      "obsidian-excalidraw-plugin:新建绘图文件": false
+      "obsidian-excalidraw-plugin:新建绘图文件": false,
+      "claudian:Open Claudian": false,
+      "zk-prefixer:创建时间戳笔记": false
     }
   },
-  "active": "824e545d98beb6ff",
+  "active": "066d8ed5010e66ea",
   "lastOpenFiles": [
+    "Nginx/Nginx 的作用和好处.md",
+    "Markdown 文档.md",
     "前端/java web/JavaScript.md",
+    "202604041351.md",
     "Excalidraw/Drawing 2026-04-04 13.39.27.excalidraw.md",
     "Excalidraw",
     "leecode/100题/技巧/287.寻找重复数.md",
@@ -261,9 +263,6 @@
     "Java后端/Spring boot/24.公共字段填充.md",
     "Java后端/Spring boot/23.Builder.md",
     "Java后端/Spring boot/20.自动配置.md",
-    "Java后端/Spring boot/21.Swagger.md",
-    "Java后端/Spring boot/22.获取数据.md",
-    "Java后端/Spring boot/19.Bean管理.md",
     "未命名.base",
     "Claude Code",
     "大模型/springAI",
